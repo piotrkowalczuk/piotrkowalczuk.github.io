@@ -90,12 +90,12 @@ Struktura reporezentująca pojedyńcze polecenie do wykonania mogłaby wygląda�
 type Jobs []*Job
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Colekcja takich struktur musi implementować wcześniej wymieniony &lt;a href=&#34;https://golang.org/pkg/container/heap/#Interface&#34;&gt;Interface&lt;/a&gt;.
+&lt;p&gt;Kolekcja takich struktur musi implementować wcześniej wymieniony &lt;a href=&#34;https://golang.org/pkg/container/heap/#Interface&#34;&gt;Interface&lt;/a&gt;.
 A więc po kolei:&lt;/p&gt;
 
 &lt;h3 id=&#34;len:042cb00d946fbfbaf0b1b50f0ee94629&#34;&gt;Len&lt;/h3&gt;
 
-&lt;p&gt;&lt;code&gt;Len&lt;/code&gt; jedynie sprawdza długość kolekcji.&lt;/p&gt;
+&lt;p&gt;Jak sama nazwa wskazuje sprawdza długość kolekcji.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;// Len implements sort Interface.
 func (j Jobs) Len() int {
