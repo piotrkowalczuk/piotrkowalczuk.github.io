@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>wersjonowanie kodu napisanego w Go &middot; Piotr Kowalczuk</title>
+	<meta name="description" content="Golang Development">
+	<meta name="HandheldFriendly" content="True">
+	<meta name="MobileOptimized" content="320">
+	<meta name="generator" content="Hugo 0.16-DEV" />
+	<meta name="robots" content="index,follow">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="http://piotrkowalczuk.github.io/css/normalize.css">
+	<link rel="stylesheet" href="http://piotrkowalczuk.github.io/css/highlight.css">
+	<link rel="stylesheet" href="http://piotrkowalczuk.github.io/css/style.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+	
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.5.0/styles/tomorrow.min.css">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.5.0/highlight.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.5.0/languages/go.min.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+<body>
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-50599199-4', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+<div id="wrapper">
+	<header class="site-header">
+		<div class="container">
+			<div class="site-title-wrapper">
+				
+				<h1 class="site-title">
+					<a title="Piotr Kowalczuk Blog" href="http://piotrkowalczuk.github.io/">Piotr Kowalczuk Blog</a>
+				</h1>
+				
+				<a class="button-square" href="http://piotrkowalczuk.github.io/index.xml"><i class="fa fa-rss"></i></a>
+				
+				
+				<a class="button-square button-social hint--top" data-hint="Github" title="Github" href="https://github.com/piotrkowalczuk">
+					<i class="fa fa-github-alt"></i>
+				</a>
+				
+				
+				
+				<a class="button-square button-social hint--top" data-hint="LinkedIn" title="LinkedIn" href="https://linkedin.com/in/piotr-kowalczuk-8a870480/">
+					<i class="fa fa-linkedin"></i>
+				</a>
+				
+				
+			</div>
+
+			<ul class="site-nav">
+				
+    <li class="site-nav-item">
+        <a title="Blog" href="http://piotrkowalczuk.github.io/">Blog</a>
+    </li>
+
+			</ul>
+		</div>
+	</header>
+
+	<div id="container">
+
+
+<div class="container">
+    <article class="post-container" itemscope="" itemtype="http://schema.org/BlogPosting">
+        <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">wersjonowanie kodu napisanego w Go</h1>
+    
+    <p class="post-date">
+        <span>Opublikowany <time datetime="2016-12-22" itemprop="datePublished">2016-12-22</time></span>
+        <span>przez</span>
+        <span itemscope="" itemprop="author" itemtype="http://schema.org/Person">
+            <span itemprop="name">
+                <a href="https://piotrkowalczuk.github.io" itemprop="url" rel="author">Piotr Kowalczuk</a>
+            </span>
+        </span>
+    </p>
+</header>
+
+        <div class="post-content clearfix" itemprop="articleBody">
+    
+
+    
+
+<h1 id="wstęp:b9f05714c789cce4ed314f4e0a4e189a">Wstęp</h1>
+
+<p>Go jako środowisko jest zdeterminowane mocno przez struktórę i organizację pracy wewnątrz Google.
+Gigant ten wytwarza oprogramowanie w oparciu o tzw. <a href="http://danluu.com/monorepo/">monorepo</a>.
+W tym przypadku jakikolwiek problem z zalerznościami nie istnieje.
+Kod całej organizacji znajduje się w jednym miejscu.</p>
+
+<p>Kiedy Go doczekało się swojej pierwszej <a href="https://blog.golang.org/go-version-1-is-released">stabilnej wersji</a> na początku 2012 roku temat zalerzności został całkowicie pominięty.
+To były ciężkie czasy.
+W zasadzie jedynym rozwiązaniem było posiadanie wielu <a href="https://golang.org/doc/code.html#Workspaces">przestrzeni roboczych</a> i przesyłanie ich w całości do repozytorium.</p>
+
+<p>Jednym z pierwszych narzędzi był <a href="https://github.com/tools/godep">godep</a>.
+Kardynalnym problemem który mu towarzyszył, była potrzeba przepisywania importów.
+Całe szczęście cały proces był zautomatyzowany.</p>
+
+<p>Wiele się zmieniło w 2015 roku kiedy światło dziennie ujrzała wersja 1.5.
+Wprowadziła ona możliwość nadpisywania zależności poprzez umieszczenie ich w katalogu <code>vendor</code>.
+Mechanizm działania jest doskonale opisany w tym <a href="https://docs.google.com/document/d/1Bz5-UB7g2uPBdOx-rw5t9MxJwkfpx90cqG9AFL0JAYo/view">dokumencie</a>.</p>
+
+<p>Od tego momentu rozpoczoł się wysyp narzędzi które działały w oparciu o wyrzej wymieniony mechanizm.</p>
+
+<h1 id="semantic-versioning:b9f05714c789cce4ed314f4e0a4e189a">Semantic Versioning</h1>
+
+<p>Semantic versioning (aka <a href="http://semver.org">semver</a>) jest to metoda oznaczania oprogramowania.
+Została ona opracowana przez <a href="http://tom.preston-werner.com">Tom&rsquo;a Preston-Werner&rsquo;a</a> (współzałorzyciela Github.com).
+Jest obecnie najszerzej (twierdze tak tylko w oparciu o swoje prywatne doświadczenia) stosowana metoda wsród społeczności Go.
+W durzym uproszczeniu.
+Identyfikator składa się z trzech członów oddzielonych kropkami:<code>{major}.{minor}.{patch}</code>.</p>
+
+<ul>
+<li><code>major</code> - zmiana tego numeru oznacza wprowadzenie zmian publicznego API które nie jest kompatybilne wstecz</li>
+<li><code>minor</code> - zmienia publiczne API, ale kompatybilność wsteczna jest nienaruszona</li>
+<li><code>patch</code> - pomniejsze zmiany</li>
+</ul>
+
+<h1 id="praktyczne-zastosowanie:b9f05714c789cce4ed314f4e0a4e189a">Praktyczne zastosowanie</h1>
+
+<p>Na wstępie warto rozróżnić że inaczej podejdziemy do aplikacji która jest kompilowana do kodu wykonywalnego a inaczej do biblioteki.
+Nie mniej jednak w obu przypadkach semver odgrywa tak samo ważną rolę.</p>
+
+<p>Obecnie dostępnych jest wiele menadżerów.
+Bardziej lub mniej kompletną listę możecie znaleźć na oficjalnej <a href="https://github.com/golang/go/wiki/PackageManagementTools">wiki</a>.
+Osobiście preferuje <a href="glide.sh">glide</a> i ten właśnie manager użyję tutaj.</p>
+
+<h2 id="biblioteka:b9f05714c789cce4ed314f4e0a4e189a">Biblioteka</h2>
+
+<h2 id="aplikacja:b9f05714c789cce4ed314f4e0a4e189a">Aplikacja</h2>
+
+<p>Na początek warto napisać prostą aplikację której zadaniem będzie wyswietlenie swojej własnej wersji.</p>
+
+<pre><code class="language-go">package main
+
+import (
+	&quot;flag&quot;
+	&quot;fmt&quot;
+	&quot;os&quot;
+)
+
+var version string
+
+type config struct {
+	version bool
+}
+
+func main() {
+	c := config{}
+	flag.BoolVar(&amp;c.version, &quot;version&quot;, false, &quot;prints version&quot;)
+	flag.Parse()
+
+	if c.version {
+		fmt.Print(version)
+		os.Exit(0)
+	}
+
+	fmt.Println(&quot;program executes here...&quot;)
+}
+</code></pre>
+
+<h2 id="inicjowanie-repozytorium:b9f05714c789cce4ed314f4e0a4e189a">Inicjowanie repozytorium</h2>
+
+<p>Naszym celem jest utworzenie pierwszego commita który będzie oznaczony stosowną wersją.</p>
+
+<pre><code class="language-bash">git init
+git remote add origin &lt;zewnetrzne-repozytorium&gt;
+touch README.md
+git add -A
+git commit -m &quot;initial commit&quot;
+git tag v0.1.0
+git push --all
+</code></pre>
+
+<h2 id="oznaczanie-pliku-wykonywalnego:b9f05714c789cce4ed314f4e0a4e189a">Oznaczanie pliku wykonywalnego</h2>
+
+<p>Dobrą praktyką jest opisanie każdego pliku wykonywalnego wersją której ten plik odpowiada.
+Warto ten proces zautomatyzować żeby uniknąć.</p>
+
+<p>Pierwszym krokiem będzie utworzenie pliku <code>Makefile</code> o zawartości:</p>
+
+<pre><code>VERSION=$(shell git describe --tags --always --dirty)
+LDFLAGS = -X 'main.version=$(VERSION)'
+
+build:
+	@go build -ldflags &quot;${LDFLAGS}&quot; -a -o bin/app .
+</code></pre>
+
+<p>Zawiera on tylko jeden target. <code>build</code> ma zadanie kompilacje aplikacji oraz wstrzyknięcie wersji za pomocą flagi <code>-ldflags</code>.
+Wartość domyślna zmiennej <code>version</code> w tak skompilowanym programie będzie równa wynikowi komendy <code>git describe --tags --always --dirty</code>.</p>
+
+<ul>
+<li>wstep (google, monorepo)</li>
+<li>obecnie dostepne metody</li>
+<li>przyszłość</li>
+</ul>
+
+</div>
+
+        <footer class="post-footer clearfix">
+    
+        <p class="post-tags">
+            <span>Tagged:</span>
+            
+                 <a href="http://piotrkowalczuk.github.io/tags/golang/">golang</a>
+            
+        </p>
+    
+
+    <div class="share">
+        <a class="icon-twitter" href="http://twitter.com/share?text=wersjonowanie%20kodu%20napisanego%20w%20Go&url=http%3a%2f%2fpiotrkowalczuk.github.io%2f2016%2f12%2f22%2fstruktura-zaawansowanego-projektu%2f"
+            onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+            <i class="fa fa-twitter"></i>
+            <span class="hidden">Twitter</span>
+        </a>
+
+        <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http%3a%2f%2fpiotrkowalczuk.github.io%2f2016%2f12%2f22%2fstruktura-zaawansowanego-projektu%2f"
+            onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+            <i class="fa fa-facebook"></i>
+            <span class="hidden">Facebook</span>
+        </a>
+
+        <a class="icon-google-plus" href="https://plus.google.com/share?url=http%3a%2f%2fpiotrkowalczuk.github.io%2f2016%2f12%2f22%2fstruktura-zaawansowanego-projektu%2f"
+           onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+           <i class="fa fa-google-plus"></i>
+            <span class="hidden">Google+</span>
+        </a>
+    </div>
+</footer>
+
+        
+    <div class="comments">
+        <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'piotrkowalczuk';
+    var disqus_identifier = 'http:\/\/piotrkowalczuk.github.io\/2016\/12\/22\/struktura-zaawansowanego-projektu\/';
+    var disqus_title = 'wersjonowanie kodu napisanego w Go';
+    var disqus_url = 'http:\/\/piotrkowalczuk.github.io\/2016\/12\/22\/struktura-zaawansowanego-projektu\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+
+    </article>
+</div>
+
+            </div>
+            <div>
+                <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+    (function() {
+        
+        
+
+
+
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = 'piotrkowalczuk';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="container">
+                <div class="site-title-wrapper">
+                    <h1 class="site-title">
+                        <a title="Piotr Kowalczuk Blog" href="http://piotrkowalczuk.github.io/">Piotr Kowalczuk Blog</a>
+                    </h1>
+                    <a class="button-square button-jump-top js-jump-top" href="#">
+                        <i class="fa fa-angle-up"></i>
+                    </a>
+                </div>
+
+                <p class="footer-copyright">
+                    <span>&copy; 2016 / Powered by <a href="http://gohugo.io/">Hugo</a></span>
+                </p>
+            </div>
+        </footer>
+
+        <script src="http://piotrkowalczuk.github.io/js/jquery-1.11.3.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+        <script src="http://piotrkowalczuk.github.io/js/jquery.fitvids.js"></script>
+        <script src="http://piotrkowalczuk.github.io/js/scripts.js"></script>
+    </body>
+</html>
+
