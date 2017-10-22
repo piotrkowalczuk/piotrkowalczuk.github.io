@@ -7,8 +7,109 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>pl</language>
     <copyright>Piotr Kowalczuk</copyright>
-    <lastBuildDate>Sun, 10 Jul 2016 20:12:00 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 21 Oct 2017 19:56:18 +0200</lastBuildDate>
     <atom:link href="http://piotrkowalczuk.github.io/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>W Poszukiwaniu Pracy</title>
+      <link>http://piotrkowalczuk.github.io/2017/10/21/w-poszukiwaniu-pracy/</link>
+      <pubDate>Sat, 21 Oct 2017 19:56:18 +0200</pubDate>
+      
+      <guid>http://piotrkowalczuk.github.io/2017/10/21/w-poszukiwaniu-pracy/</guid>
+      <description>
+
+&lt;h2 id=&#34;wstęp:1ee101fad5fbad352ad8ecdf4216a0b4&#34;&gt;Wstęp&lt;/h2&gt;
+
+&lt;p&gt;Pierwsza stabilna wersja języka została wydana w marcu 2012 roku.
+Od tamtego czasu mineło już ponad 5 lat.&lt;/p&gt;
+
+&lt;p&gt;W tym czasie w rankingu &lt;a href=&#34;https://www.tiobe.com/tiobe-index/&#34;&gt;TIOBE&lt;/a&gt; język Go zanotował wzrost z 0.086% do 1.357% i plasuje się na pozycji 20.
+Mogłoby się to wydawać niewiele, ale jak porównamy to do Javascript&amp;rsquo;u posiadającego obecnie 3% udziału w rynku i będącego na pozycji 6, perspektywa się troche zmienia.&lt;/p&gt;
+
+&lt;p&gt;Język zajmuję też 9 miejsce pod względem ilości otwartych pull requestów na &lt;a href=&#34;https://octoverse.github.com&#34;&gt;githubie&lt;/a&gt;, posiadając 285 tysięcy kontrybucji.
+Dla porównania - Java, znajdująca się na miejscu drugim, posiada ich 986 tysięcy.&lt;/p&gt;
+
+&lt;p&gt;Szacuje się, że na tą chwilę na świecie jest przynajmniej &lt;a href=&#34;https://research.swtch.com/gophercount&#34;&gt;500 tysięcy&lt;/a&gt; developerów Go.
+Język otrzymał wsparcie większości edytorów oraz środowisk deweloperskich.
+Na etapie Early Access jest &lt;a href=&#34;https://www.jetbrains.com/go/&#34;&gt;komercyjne IDE&lt;/a&gt; od Jetbrains.
+Golang jest także preinstalowany w wielu dystrybucjach linuxa.&lt;/p&gt;
+
+&lt;p&gt;Dlaczego o tym wszystkim piszę?
+Odnoszę wrażenie, że pomimo tych wszystkich lat Golang jest postrzegany jako coś egzotycznego i niszowego.
+Przekłada się to bezpośrednio na podejscie kandydatów do procesu rekrutacji -
+świadomość kandydata stoi w miejscu, a oczekiwania coraz bardziej doświadczonych zespołów rosną.&lt;/p&gt;
+
+&lt;p&gt;Tym wpisem chciałbym wpłynąć na świadomość programistów w zakresie wymagań jakie są przed nimi stawiane. Lista poniżej jest moim &lt;strong&gt;subiektywnym&lt;/strong&gt; zestawieniem zagadnień, których znajomość w moich oczach pozytywnie wpływa na ocene kandydata.&lt;/p&gt;
+
+&lt;h2 id=&#34;filozofia:1ee101fad5fbad352ad8ecdf4216a0b4&#34;&gt;Filozofia&lt;/h2&gt;
+
+&lt;p&gt;Go nie bez powodu uchodzi za język prosty do nauki. W mojej ocenie jest to także jezyk zaskakująco trudny do opanowania.&lt;/p&gt;
+
+&lt;p&gt;Trywialnym jest napisanie bylejakiego kodu. Trochę trudniejsze ale ciągle łatwe jest napisanie kodu przekombinowanego, z masą niepotrzebnej abstrakcji i komponentów. Napisanie kodu, który jest genialny w swojej prostocie jest naprawde trudne.&lt;/p&gt;
+
+&lt;p&gt;Z moich obserwacji wynika, że czas potrzebny programistom na oduczenie się nawyków przyniesionych z wcześniejszych technologi jest nieakceptowanie długi.
+Co do zasady sądze że powinno odrzucać się kandydatów, którzy nie pojeli filozofii Go w poziomie wystarczającym. Jest to zwyczajnie zbyt kosztowne i niebezpieczne dla kultury wytworzeonej w zespole.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=rFejpH_tAHM&#34;&gt;Simplicity is Complicated&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://go-proverbs.github.io&#34;&gt;Proverbs&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;narzędzia:1ee101fad5fbad352ad8ecdf4216a0b4&#34;&gt;Narzędzia&lt;/h2&gt;
+
+&lt;p&gt;Jednym z największych atutów Go jest jego środowisko developerskie. Poza językiem instalator instaluje również szereg narzędzi, powiedziałbym niezbędnych w codziennej pracy takich jak &lt;code&gt;cover&lt;/code&gt;, &lt;code&gt;fmt&lt;/code&gt;, &lt;code&gt;vet&lt;/code&gt;, &lt;code&gt;trace&lt;/code&gt; czy &lt;code&gt;pprof&lt;/code&gt;.
+Znajomość tych narzędzi może być przydatna w trakcie rozmowy kwalifikacyjnej podczas sesji pair-programing, kiedy developer poprosi was o optymalizację albo naprawienie danej aplikacji.&lt;/p&gt;
+
+&lt;p&gt;Ponadto, przydać się może doświadczenie z bardziej zaawansowanymi opcjami kompilacji. Dla przykładu kiedy chcemy przeprowadzić &lt;a href=&#34;https://en.wikipedia.org/wiki/Escape_analysis&#34;&gt;Escape Analysis&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;współdzielenie-danych-i-synchronizacja:1ee101fad5fbad352ad8ecdf4216a0b4&#34;&gt;Współdzielenie danych i synchronizacja&lt;/h2&gt;
+
+&lt;p&gt;Kanały są jednym z najbardziej rozpoznawalnych aspektów Go. Ich poprawne stosowanie przysparza kandydatom jednak wiele problemu. To zły znak. Przejawia się to najczęściej zbyt dużą ich ilością, dodatkowo niepotrzebnie użytą strukturą &lt;code&gt;sync.WaitGroup&lt;/code&gt; czy poprostu stosowaniem ich tam, gdzie jest to zbędne.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Share memory by communicating; don&amp;rsquo;t communicate by sharing memory&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Potencjalny kandydat musi rozumieć kiedy stosować kanały, &lt;a href=&#34;https://pl.wikipedia.org/wiki/Problem_wzajemnego_wykluczania&#34;&gt;mutex&lt;/a&gt; czy też może sprzętową synchronizację dostępną w paczce &lt;a href=&#34;https://golang.org/pkg/sync/atomic/&#34;&gt;sync/atomic&lt;/a&gt;.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://greenteapress.com/wp/semaphores/&#34;&gt;The Little Book of Semaphores&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://sigops.org/sosp/sosp13/papers/p33-david.pdf&#34;&gt;Everything You Always Wanted to Know About Synchronization but Were Afraid to Ask&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.golang.org/pipelines&#34;&gt;Go Concurrency Patterns: Pipelines and cancellation&lt;/a&gt;
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;przerwania:1ee101fad5fbad352ad8ecdf4216a0b4&#34;&gt;Przerwania&lt;/h2&gt;
+
+&lt;p&gt;We wszelkiego rodzaju aplikacjach webowych czy też systemach rozproszonych możliwość przerwania przetwarzania żądania jest na wagę złota. Taki mechanizm pozwala kontrolować zużycie zasobów (ich zwalnianie) oraz przestrzec się przed katastrofalnym w skutkach efektem domina.&lt;/p&gt;
+
+&lt;p&gt;Znajomość paczki &lt;a href=&#34;https://golang.org/pkg/context&#34;&gt;context&lt;/a&gt; jest tutaj kluczowa.
+Za jej pomocą jesteśmy w stanie anulować żądania oraz procesy, a także określać górną granice czasu, w którym nasza logika ma zostać wykonana.&lt;/p&gt;
+
+&lt;p&gt;Temat zdecydowanie zasługuje na osobny wpis.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.golang.org/context&#34;&gt;Go Concurrency Patterns: Context&lt;/a&gt;
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;whitebox-monitoring-tracing:1ee101fad5fbad352ad8ecdf4216a0b4&#34;&gt;Whitebox Monitoring/Tracing&lt;/h2&gt;
+
+&lt;p&gt;Ostatecznie nasz kod ląduje na produkcji. Rolą dewelopera jest udostępnienie metryk, które pomogą określić wydajność aplikacji oraz zweryfikować jej poprawne działanie.&lt;/p&gt;
+
+&lt;p&gt;Do monitorowania najczęstszym wyborem, w przypadku zespołów, czysto Golangowych jest &lt;a href=&#34;https://prometheus.io&#34;&gt;Prometheus&lt;/a&gt;. Najpewniej żadne zadanie testowe nie będzie wymagać jego zastosowania, ale znajomość zagadnienia jest jak najbardziej na plus.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Tracing_(software)&#34;&gt;Tracing&lt;/a&gt; może zostać zaimplementowany na wiele sposobów. Na początek, znajomość paczki &lt;a href=&#34;https://godoc.org/golang.org/x/net/trace&#34;&gt;x/net/trace&lt;/a&gt; powinna wystarczyć.&lt;/p&gt;
+
+&lt;h2 id=&#34;podsumowanie:1ee101fad5fbad352ad8ecdf4216a0b4&#34;&gt;Podsumowanie&lt;/h2&gt;
+
+&lt;p&gt;Mimo iż Go jest stosowane przewarznie w zastosowaniach serwerowych/cloudowych, nie musi to być zasadą. Dlatego jeszcze raz chciałbym podkreślić, że reprezentuję tutaj jedynie mój prywatny punkt widzenia.&lt;/p&gt;
+
+&lt;p&gt;Wiele tematów takich jak testowanie, benchmnarking czy stosowanie paczki &lt;code&gt;http&lt;/code&gt; umyślnie zignorowałem. Skupiłem się jedynie na aspektach, które najczęsciej są  pomijane przez kandydatów, których miałem przyjemność ewaluować.&lt;/p&gt;
+
+&lt;p&gt;Mam nadzieję, że powyższy tekst pomoże komuś w znalezieniu upragnionej pracy. Wszystkim przyszłym &lt;a href=&#34;https://blog.golang.org/gopher&#34;&gt;gopherom&lt;/a&gt; życzę powodzenia.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Kolejka Priorytetowa</title>
