@@ -24,7 +24,7 @@
 Od tamtego czasu mineło już ponad 5 lat.&lt;/p&gt;
 
 &lt;p&gt;W tym czasie w rankingu &lt;a href=&#34;https://www.tiobe.com/tiobe-index/&#34;&gt;TIOBE&lt;/a&gt; język Go zanotował wzrost z 0.086% do 1.357% i plasuje się na pozycji 20.
-Mogłoby się to wydawać niewiele, ale jak porównamy to do Javascript&amp;rsquo;u posiadającego obecnie 3% udziału w rynku i będącego na pozycji 6, perspektywa się troche zmienia.&lt;/p&gt;
+Mogłoby się to wydawać niewiele, ale jak porównamy to do Javascript&amp;rsquo;u posiadającego obecnie 3% udziału w rynku i będącego na pozycji 6, perspektywa trochę się zmienia.&lt;/p&gt;
 
 &lt;p&gt;Język zajmuję też 9 miejsce pod względem ilości otwartych pull requestów na &lt;a href=&#34;https://octoverse.github.com&#34;&gt;githubie&lt;/a&gt;, posiadając 285 tysięcy kontrybucji.
 Dla porównania - Java, znajdująca się na miejscu drugim, posiada ich 986 tysięcy.&lt;/p&gt;
@@ -81,7 +81,7 @@ Znajomość tych narzędzi może być przydatna w trakcie rozmowy kwalifikacyjne
 
 &lt;h2 id=&#34;przerwania:1ee101fad5fbad352ad8ecdf4216a0b4&#34;&gt;Przerwania&lt;/h2&gt;
 
-&lt;p&gt;We wszelkiego rodzaju aplikacjach webowych czy też systemach rozproszonych możliwość przerwania przetwarzania żądania jest na wagę złota. Taki mechanizm pozwala kontrolować zużycie zasobów (ich zwalnianie) oraz przestrzec się przed katastrofalnym w skutkach efektem domina.&lt;/p&gt;
+&lt;p&gt;We wszelkiego rodzaju aplikacjach webowych czy też systemach rozproszonych, możliwość przerwania przetwarzania żądania jest na wagę złota. Taki mechanizm pozwala kontrolować zużycie zasobów (ich zwalnianie) oraz przestrzec się przed katastrofalnym w skutkach efektem domina.&lt;/p&gt;
 
 &lt;p&gt;Znajomość paczki &lt;a href=&#34;https://golang.org/pkg/context&#34;&gt;context&lt;/a&gt; jest tutaj kluczowa.
 Za jej pomocą jesteśmy w stanie anulować żądania oraz procesy, a także określać górną granice czasu, w którym nasza logika ma zostać wykonana.&lt;/p&gt;
