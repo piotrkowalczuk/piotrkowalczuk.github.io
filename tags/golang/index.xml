@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Golang on Piotr Kowalczuk Blog</title>
-    <link>http://piotrkowalczuk.github.io/tags/golang/</link>
+    <link>https://piotrkowalczuk.github.io/tags/golang/</link>
     <description>Recent content in Golang on Piotr Kowalczuk Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pl</language>
     <copyright>Piotr Kowalczuk</copyright>
     <lastBuildDate>Sat, 21 Oct 2017 19:56:18 +0200</lastBuildDate>
-    <atom:link href="http://piotrkowalczuk.github.io/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://piotrkowalczuk.github.io/tags/golang/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>W Poszukiwaniu Pracy</title>
-      <link>http://piotrkowalczuk.github.io/2017/10/21/w-poszukiwaniu-pracy/</link>
+      <link>https://piotrkowalczuk.github.io/2017/10/21/w-poszukiwaniu-pracy/</link>
       <pubDate>Sat, 21 Oct 2017 19:56:18 +0200</pubDate>
       
-      <guid>http://piotrkowalczuk.github.io/2017/10/21/w-poszukiwaniu-pracy/</guid>
+      <guid>https://piotrkowalczuk.github.io/2017/10/21/w-poszukiwaniu-pracy/</guid>
       <description>
 
 &lt;h2 id=&#34;wstęp:1ee101fad5fbad352ad8ecdf4216a0b4&#34;&gt;Wstęp&lt;/h2&gt;
@@ -113,10 +113,10 @@ Za jej pomocą jesteśmy w stanie anulować żądania oraz procesy, a także okr
     
     <item>
       <title>Kolejka Priorytetowa</title>
-      <link>http://piotrkowalczuk.github.io/2016/07/10/kolejka-priorytetowa/</link>
+      <link>https://piotrkowalczuk.github.io/2016/07/10/kolejka-priorytetowa/</link>
       <pubDate>Sun, 10 Jul 2016 20:12:00 +0200</pubDate>
       
-      <guid>http://piotrkowalczuk.github.io/2016/07/10/kolejka-priorytetowa/</guid>
+      <guid>https://piotrkowalczuk.github.io/2016/07/10/kolejka-priorytetowa/</guid>
       <description>
 
 &lt;h2 id=&#34;wstęp:042cb00d946fbfbaf0b1b50f0ee94629&#34;&gt;Wstęp&lt;/h2&gt;
