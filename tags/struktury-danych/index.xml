@@ -18,7 +18,7 @@
       <guid>http://piotrkowalczuk.github.io/2016/07/10/kolejka-priorytetowa/</guid>
       <description>
 
-&lt;h1 id=&#34;wstęp:042cb00d946fbfbaf0b1b50f0ee94629&#34;&gt;Wstęp&lt;/h1&gt;
+&lt;h2 id=&#34;wstęp:042cb00d946fbfbaf0b1b50f0ee94629&#34;&gt;Wstęp&lt;/h2&gt;
 
 &lt;p&gt;Kolejka priorytetowa to abstrakcyjna struktura danych gdzie elementy są uszeregowane według danej wielkości.
 Kolejka ta nie jest kolejką typu FIFO czy też LIFO.
@@ -34,7 +34,7 @@ Ponieważ jest to &lt;a href=&#34;https://pl.wikipedia.org/wiki/Abstrakcyjny_typ
 &lt;li&gt;Kolejka Brodala&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;zagadnienie:042cb00d946fbfbaf0b1b50f0ee94629&#34;&gt;Zagadnienie&lt;/h1&gt;
+&lt;h2 id=&#34;zagadnienie:042cb00d946fbfbaf0b1b50f0ee94629&#34;&gt;Zagadnienie&lt;/h2&gt;
 
 &lt;p&gt;Aby nadać problemowi bardziej intuicyjny charakter spróbujmy zastosować go w praktyce.
 Naszym zadaniem będzie utworzenie kolejki poleceń. Zadania mogą być dodawane w dowolnej kolejności.
@@ -49,7 +49,7 @@ Każde polecenie powinno być opisane przez:&lt;/p&gt;
 &lt;li&gt;&lt;code&gt;command&lt;/code&gt; - komenda uruchamiająca skrypt/program&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;propozycja-rozwiązania:042cb00d946fbfbaf0b1b50f0ee94629&#34;&gt;Propozycja rozwiązania&lt;/h2&gt;
+&lt;h3 id=&#34;propozycja-rozwiązania:042cb00d946fbfbaf0b1b50f0ee94629&#34;&gt;Propozycja rozwiązania&lt;/h3&gt;
 
 &lt;p&gt;Biblioteka standardowa Go jest naprawdę bogata.
 Nie zabrakło także implementacji stosu (binarnego).
@@ -72,7 +72,7 @@ Paczka &lt;a href=&#34;https://golang.org/pkg/container/heap/&#34;&gt;heap&lt;/a
 &lt;li&gt;&lt;a href=&#34;https://golang.org/pkg/container/heap/#Fix&#34;&gt;heap.Fix&lt;/a&gt; - &amp;ldquo;naprawienie&amp;rdquo; stosu po np zmianie wartosci jednego z elementow, &lt;code&gt;O(log(n))&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;implementacja:042cb00d946fbfbaf0b1b50f0ee94629&#34;&gt;Implementacja&lt;/h2&gt;
+&lt;h3 id=&#34;implementacja:042cb00d946fbfbaf0b1b50f0ee94629&#34;&gt;Implementacja&lt;/h3&gt;
 
 &lt;p&gt;Raz jeszcze skorzystamy z dobrodziejstw biblioteki standardowej.
 Znaleźć w niej możemy paczkę &lt;a href=&#34;https://golang.org/pkg/os/exec/&#34;&gt;exec&lt;/a&gt; w której to znajduje się struktura &lt;a href=&#34;https://golang.org/pkg/os/exec/#Cmd&#34;&gt;exec.Cmd&lt;/a&gt;.
@@ -93,7 +93,7 @@ type Jobs []*Job
 &lt;p&gt;Kolekcja takich struktur musi implementować wcześniej wymieniony &lt;a href=&#34;https://golang.org/pkg/container/heap/#Interface&#34;&gt;Interface&lt;/a&gt;.
 A więc po kolei:&lt;/p&gt;
 
-&lt;h3 id=&#34;len:042cb00d946fbfbaf0b1b50f0ee94629&#34;&gt;Len&lt;/h3&gt;
+&lt;h4 id=&#34;len:042cb00d946fbfbaf0b1b50f0ee94629&#34;&gt;Len&lt;/h4&gt;
 
 &lt;p&gt;Jak sama nazwa wskazuje sprawdza długość kolekcji.&lt;/p&gt;
 
@@ -103,7 +103,7 @@ func (j Jobs) Len() int {
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;less:042cb00d946fbfbaf0b1b50f0ee94629&#34;&gt;Less&lt;/h3&gt;
+&lt;h4 id=&#34;less:042cb00d946fbfbaf0b1b50f0ee94629&#34;&gt;Less&lt;/h4&gt;
 
 &lt;p&gt;Metoda ta nie tylko sprawdza który deadline nastąpi jako pierwszy,
 ale w wypadku gdy są równe, porównuje także wartość &lt;code&gt;Epsilon&lt;/code&gt;.
@@ -118,7 +118,7 @@ func (j Jobs) Less(n, m int) bool {
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;swap:042cb00d946fbfbaf0b1b50f0ee94629&#34;&gt;Swap&lt;/h3&gt;
+&lt;h4 id=&#34;swap:042cb00d946fbfbaf0b1b50f0ee94629&#34;&gt;Swap&lt;/h4&gt;
 
 &lt;p&gt;Nic innego jak zamiana elementów pod wskazanymi indeksami.&lt;/p&gt;
 
@@ -130,7 +130,7 @@ func (j Jobs) Swap(n, m int) {
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;push:042cb00d946fbfbaf0b1b50f0ee94629&#34;&gt;Push&lt;/h3&gt;
+&lt;h4 id=&#34;push:042cb00d946fbfbaf0b1b50f0ee94629&#34;&gt;Push&lt;/h4&gt;
 
 &lt;p&gt;Przez push rozumiemy dodanie na koniec kolekcji nowego elementu i ustawienie jego indeksu na &lt;code&gt;n&lt;/code&gt;.
 Funkcja &lt;a href=&#34;https://golang.org/pkg/container/heap/#Push&#34;&gt;heap.Push&lt;/a&gt; użyje tej metody na początku, a następnie będzie przesuwać element do góry tak długo jak to tylko możliwe, aż osiągnie właściwy dla siebie index wynikający z warunku zawartego w metodzie &lt;code&gt;Less&lt;/code&gt;.&lt;/p&gt;
@@ -144,7 +144,7 @@ func (j *Jobs) Push(x interface{}) {
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;pop:042cb00d946fbfbaf0b1b50f0ee94629&#34;&gt;Pop&lt;/h3&gt;
+&lt;h4 id=&#34;pop:042cb00d946fbfbaf0b1b50f0ee94629&#34;&gt;Pop&lt;/h4&gt;
 
 &lt;p&gt;Usuniecie zadania z kolejki odbywa się przez utworzenie nowego &lt;a href=&#34;https://blog.golang.org/go-slices-usage-and-internals&#34;&gt;slice&amp;rsquo;a&lt;/a&gt; z pominięciem ostatniego elementu.
 Dla jasności ustawiamy także &lt;code&gt;Index&lt;/code&gt; usuniętego elementu na &lt;code&gt;-1&lt;/code&gt;.&lt;/p&gt;
@@ -160,7 +160,7 @@ func (j *Jobs) Pop() interface{} {
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;efekt-końcowy:042cb00d946fbfbaf0b1b50f0ee94629&#34;&gt;Efekt końcowy&lt;/h3&gt;
+&lt;h4 id=&#34;efekt-końcowy:042cb00d946fbfbaf0b1b50f0ee94629&#34;&gt;Efekt końcowy&lt;/h4&gt;
 
 &lt;p&gt;Całość działa tak jak przewiduje to koncepcja kolejki priorytetowej.
 &lt;a href=&#34;https://blog.golang.org/examples&#34;&gt;Testowy przykład&lt;/a&gt; to potwierdza.&lt;/p&gt;
@@ -210,7 +210,7 @@ func (j *Jobs) Pop() interface{} {
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h1 id=&#34;wnioski:042cb00d946fbfbaf0b1b50f0ee94629&#34;&gt;Wnioski&lt;/h1&gt;
+&lt;h2 id=&#34;wnioski:042cb00d946fbfbaf0b1b50f0ee94629&#34;&gt;Wnioski&lt;/h2&gt;
 
 &lt;p&gt;Kolejka priorytetowa to bardzo ważna struktura danych szczególnie w przypadku wszelkiego rodzaju aplikacji serwerowych.
 Przed przystąpieniem do rozwiazania problemu warto przyjrzeć się &lt;a href=&#34;https://golang.org/pkg/&#34;&gt;bibliotece standardowej&lt;/a&gt;,
