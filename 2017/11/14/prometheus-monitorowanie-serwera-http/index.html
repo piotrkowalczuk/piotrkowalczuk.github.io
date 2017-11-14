@@ -7,6 +7,7 @@
 	<meta name="description" content="Monitorowanie Serwera HTTP">
 	<meta name="HandheldFriendly" content="True">
 	<meta name="MobileOptimized" content="320">
+    <meta name="theme-color" content="#F03838">
 	<meta name="generator" content="Hugo 0.16-DEV" />
 	<meta name="robots" content="index,follow">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -107,22 +108,22 @@ ga('send', 'pageview');
 <p><a href="https://prometheus.io">Prometheus</a> jest to ekosystem do monitorowania napisany przez programistów z <a href="https://soundcloud.com">SoundCloud</a>.
 Jak możecie się przekonać przeglądając oficjalne konto na <a href="https://github.com/prometheus">githubie</a>, większość środowiska jest napisana w <a href="http://golang.org">Go</a>.
 Od 2016 roku projekt jest też częścią <a href="https://www.cncf.io">Cloud Native Computing Foundation</a> obok takich rozwiązań jak <a href="https://kubernetes.io">kubernetes</a>, <a href="http://grpc.io">gRPC</a> czy <a href="http://opentracing.io">OpenTracing</a>.
-Daje nam pewność że projekt będzie rozwijany długie lata, będzie ewoluował razem z resztą środowiska, a także wsparcie dla <strong>Go</strong> będzie stało na najwyższym poziomie.</p>
+Daje nam to pewność, że projekt będzie rozwijany przez długie lata, będzie ewoluował razem z resztą środowiska, a także wsparcie dla <strong>Go</strong> będzie stało na najwyższym poziomie.</p>
 
-<p>Skupie się tutaj na ostatnie wersji oznaczonej tagiem <code>v0.8.0</code>.
+<p>Skupię się tutaj na ostatniej wersji, oznaczonej tagiem <code>v0.8.0</code>.
 W tej wersji wiele funkcji zostało oznaczonych jako <code>DEPRECATED</code> i zostaną one przeze mnie pominięte.
 Zalecana wersja Go to 1.9+.</p>
 
 <h2 id="biblioteka:344187460f15e6ef8677e80bc40cccdc">Biblioteka</h2>
 
-<p>Zasadniczo <strong>Prometheus</strong> jako serwer centralny musi być swiadomy istnienia aplikacji która jest monitorowana.
+<p>Zasadniczo <strong>Prometheus</strong> jako serwer centralny musi być świadomy istnienia aplikacji która jest monitorowana.
 Tylko wtedy jest on w stanie pobrać metryki ze wskazanego endpointu.
-Z pomocą przychodzi nam biblioteka <a href="https://godoc.org/github.com/prometheus/client_golang/prometheus/promhttp">promhttp</a> która jest częścią składową oficjalnej <a href="https://github.com/prometheus/client_golang/tree/master/prometheus">paczki</a>.</p>
+Z pomocą przychodzi nam biblioteka <a href="https://godoc.org/github.com/prometheus/client_golang/prometheus/promhttp">promhttp</a>, która jest częścią składową oficjalnej <a href="https://github.com/prometheus/client_golang/tree/master/prometheus">paczki</a>.</p>
 
 <p><a href="https://godoc.org/github.com/prometheus/client_golang/prometheus/promhttp#HandlerFor">promhttp.HandlerFor</a> pozwala utworzyć endpoint dla danego <a href="https://godoc.org/github.com/prometheus/client_golang/prometheus#Gatherer">prometheus.Gatherer&rsquo;a</a>.
 Interfejs ten jest na przykład implementowany przez <a href="https://godoc.org/github.com/prometheus/client_golang/prometheus#pkg-variables">prometheus.DefaultRegisterer</a>.</p>
 
-<p>Ponadto biblioteka ta zawiera garść dekoratorów ktore pozwolą nam zbierać informacje na temat naszej aplikacji:</p>
+<p>Ponadto biblioteka ta zawiera garść dekoratorów które, pozwolą nam zbierać informacje na temat naszej aplikacji:</p>
 
 <ul>
 <li><a href="https://godoc.org/github.com/prometheus/client_golang/prometheus/promhttp#InstrumentHandlerCounter">promhttp.InstrumentHandlerCounter</a> - całkowita liczba przetworzonych żądań</li>
@@ -134,7 +135,7 @@ Interfejs ten jest na przykład implementowany przez <a href="https://godoc.org/
 
 <h2 id="implementacja:344187460f15e6ef8677e80bc40cccdc">Implementacja</h2>
 
-<p>Jak widać żeby zacząc nie trzeba wiele się napracować, większość potrzebnych nam składników jest już dostępna.
+<p>Jak widać, żeby zacząć nie trzeba się wiele napracować. Większość potrzebnych nam składników jest już dostępna.
 Brakujący element to <a href="https://godoc.org/github.com/prometheus/client_golang/prometheus#Collector">kolektory</a> które musimy zainicjować własnoręcznie.</p>
 
 <pre><code class="language-go">duration := prometheus.NewHistogramVec(
@@ -157,8 +158,8 @@ requests := prometheus.NewCounterVec(
 )
 </code></pre>
 
-<p>Oba one muszą zostać zarejestrowane a następnie przekazane jako argument do wyżej wymienionych dekoratorów.
-Możemy trochę usprawnić ten process poprzez wprowadzenie dodatkowej struktóry.</p>
+<p>Oba one muszą zostać zarejestrowane, a następnie przekazane jako argument do wyżej wymienionych dekoratorów.
+Możemy trochę usprawnić ten proces poprzez wprowadzenie dodatkowej struktury.</p>
 
 <pre><code class="language-go">type decorator struct {
 	duration *prometheus.HistogramVec
@@ -181,7 +182,7 @@ func (d *decorator) Collect(in chan&lt;- prometheus.Metric) {
 }
 </code></pre>
 
-<p>Dodatkowo możemy zredukować duplikacje kodu implementując dodatkową metodę.
+<p>Dodatkowo, możemy zredukować duplikację kodu implementując dodatkową metodę.
 Jej zadaniem będzie dekorowanie danego handlera szeregiem funkcji.</p>
 
 <pre><code class="language-go">func (d *decorator) instrument(handler http.Handler) http.Handler {
@@ -195,7 +196,7 @@ Jej zadaniem będzie dekorowanie danego handlera szeregiem funkcji.</p>
 }
 </code></pre>
 
-<p>Naszym ostatnim krokiem będzie połączenie tego ze sobą i udostępnienie metryk.</p>
+<p>Naszym ostatnim krokiem będzie połączenie wszystkiego ze sobą i udostępnienie metryk.</p>
 
 <pre><code class="language-go">func main() {
     dec := &amp;decorator{
@@ -222,12 +223,12 @@ Jej zadaniem będzie dekorowanie danego handlera szeregiem funkcji.</p>
 <p>Aplikacja przez nas napisana będzie nasłuchiwać na dwóch portach.
 Pierwszy <code>8080</code>, zarezerowany dla aplikacji właściwej.
 Drugi <code>8081</code>, na którym prometheus będzie miał dostęp do metryk.
-Chciałbym zwrócic uwagę że router został w drugim przypadku zastosowany nie bez powodu.
-Pozwoli on w przyszłości udostępnić na tym samym porcie healthcheck czy też endpointy <a href="https://golang.org/pkg/net/http/pprof/">pprof</a>.</p>
+Chciałbym zwrócić uwagę, że router został w drugim przypadku zastosowany nie bez powodu.
+Pozwoli on w przyszłości udostępnić na tym samym porcie healthcheck, czy też endpointy <a href="https://golang.org/pkg/net/http/pprof/">pprof</a>.</p>
 
 <h2 id="weryfikacja:344187460f15e6ef8677e80bc40cccdc">Weryfikacja</h2>
 
-<p>Aby sprawdzić czy aplikacja zwraca poprawny wynik posłużymy się aplikacją powłoki systemowej <code>curl</code>.</p>
+<p>Aby sprawdzić, czy aplikacja zwraca poprawny wynik, posłużymy się aplikacją powłoki systemowej <code>curl</code>.</p>
 
 <pre><code>$ curl http://localhost:8080
 It works!
@@ -244,8 +245,8 @@ Monitoring działa bez zarzutu.</p>
 
 <h2 id="podsumowanie:344187460f15e6ef8677e80bc40cccdc">Podsumowanie</h2>
 
-<p>Aby utrzymać przejrzystość przykładów nie zawierają one wszystkich wspieranych metryk.
-Podczas ich implementacji warto zapoznać się z dokumentacją dekoratora.
+<p>Aby utrzymać przejrzystość, przykłady nie zawierają wszystkich wspieranych metryk.
+Podczas ich implementacji warto zapoznać się z dokumentacją dekoratorów.
 Znajdują się tam informacje o wspieranych etykietach.</p>
 
 <p>Pełny kod źródłowy aplikacji można znaleźć <a href="https://github.com/piotrkowalczuk/blog/tree/master/examples/prometheus-monitorowanie-serwera-http">tutaj</a>.</p>
