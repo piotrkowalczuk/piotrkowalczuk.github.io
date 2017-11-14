@@ -143,7 +143,7 @@ Pozwoli on w przyszłości udostępnić na tym samym porcie healthcheck, czy te�
 
 &lt;h2 id=&#34;weryfikacja:344187460f15e6ef8677e80bc40cccdc&#34;&gt;Weryfikacja&lt;/h2&gt;
 
-&lt;p&gt;Aby sprawdzić, czy aplikacja zwraca poprawny wynik, posłużymy się aplikacją powłoki systemowej &lt;code&gt;curl&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Aby sprawdzić, czy nasze demo zwraca poprawny wynik, posłużymy się aplikacją powłoki systemowej &lt;code&gt;curl&lt;/code&gt;.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;$ curl http://localhost:8080
 It works!
