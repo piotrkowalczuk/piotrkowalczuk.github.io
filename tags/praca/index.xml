@@ -35,7 +35,7 @@ Na etapie Early Access jest &lt;a href=&#34;https://www.jetbrains.com/go/&#34;&g
 Golang jest także preinstalowany w wielu dystrybucjach linuxa.&lt;/p&gt;
 
 &lt;p&gt;Dlaczego o tym wszystkim piszę?
-Odnoszę wrażenie, że pomimo tych wszystkich lat Golang jest postrzegany jako coś egzotycznego i niszowego.
+Odnoszę wrażenie, że pomimo tych wszystkich lat &lt;strong&gt;Golang&lt;/strong&gt; jest postrzegany jako coś egzotycznego i niszowego.
 Przekłada się to bezpośrednio na podejscie kandydatów do procesu rekrutacji -
 świadomość kandydata stoi w miejscu, a oczekiwania coraz bardziej doświadczonych zespołów rosną.&lt;/p&gt;
 
@@ -43,12 +43,20 @@ Przekłada się to bezpośrednio na podejscie kandydatów do procesu rekrutacji 
 
 &lt;h2 id=&#34;filozofia:1ee101fad5fbad352ad8ecdf4216a0b4&#34;&gt;Filozofia&lt;/h2&gt;
 
-&lt;p&gt;Go nie bez powodu uchodzi za język prosty do nauki. W mojej ocenie jest to także jezyk zaskakująco trudny do opanowania.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Golang&lt;/strong&gt; nie bez powodu uchodzi za język prosty do nauki.
+Jego składnia jest prosta, liczba słów kluczowych niewielka, a biblioteka standardowa kompletna.&lt;/p&gt;
 
-&lt;p&gt;Trywialnym jest napisanie bylejakiego kodu. Trochę trudniejsze ale ciągle łatwe jest napisanie kodu przekombinowanego, z masą niepotrzebnej abstrakcji i komponentów. Napisanie kodu, który jest genialny w swojej prostocie jest naprawde trudne.&lt;/p&gt;
+&lt;p&gt;W mojej ocenie jest to także jezyk (co zaskakujące) znacznie trudniejszy do opanowania niż by się mogło wydawać.&lt;/p&gt;
 
-&lt;p&gt;Z moich obserwacji wynika, że czas potrzebny programistom na oduczenie się nawyków przyniesionych z wcześniejszych technologi jest nieakceptowanie długi.
-Co do zasady sądze że powinno odrzucać się kandydatów, którzy nie pojeli filozofii Go w poziomie wystarczającym. Jest to zwyczajnie zbyt kosztowne i niebezpieczne dla kultury wytworzeonej w zespole.&lt;/p&gt;
+&lt;p&gt;Trywialnym jest napisanie bylejakiego kodu.
+Trochę trudniejsze ale ciągle łatwe jest napisanie kodu przekombinowanego, z masą niepotrzebnej abstrakcji i komponentów.
+Napisanie kodu, który jest genialny w swojej prostocie jest naprawde trudne.
+A o prostotę przecież tutaj chodzi.&lt;/p&gt;
+
+&lt;p&gt;Z moich obserwacji wynika, że czas potrzebny programistom na oduczenie się nawyków przyniesionych z wcześniejszych technologi jest nieakceptowalnie długi.
+Nie każdy także musi podzielać wizję twórców Go, a to co przyciągneło go do języka to obietnica wydajności i wsparcia równoległego przetwarzania.
+Co do zasady sądze że powinno odrzucać się kandydatów, którzy nie podzielają filozofii &lt;strong&gt;Go&lt;/strong&gt;.
+Jest to zwyczajnie zbyt kosztowne i niebezpieczne dla kultury wytworzeonej w zespole.&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=rFejpH_tAHM&#34;&gt;Simplicity is Complicated&lt;/a&gt;&lt;/li&gt;
@@ -57,14 +65,19 @@ Co do zasady sądze że powinno odrzucać się kandydatów, którzy nie pojeli f
 
 &lt;h2 id=&#34;narzędzia:1ee101fad5fbad352ad8ecdf4216a0b4&#34;&gt;Narzędzia&lt;/h2&gt;
 
-&lt;p&gt;Jednym z największych atutów Go jest jego środowisko developerskie. Poza językiem instalator instaluje również szereg narzędzi, powiedziałbym niezbędnych w codziennej pracy takich jak &lt;code&gt;cover&lt;/code&gt;, &lt;code&gt;fmt&lt;/code&gt;, &lt;code&gt;vet&lt;/code&gt;, &lt;code&gt;trace&lt;/code&gt; czy &lt;code&gt;pprof&lt;/code&gt;.
+&lt;p&gt;Jednym z największych atutów &lt;strong&gt;Go&lt;/strong&gt; jest jego środowisko developerskie.
+Poza językiem instalator instaluje również szereg narzędzi, powiedziałbym niezbędnych w codziennej pracy takich jak &lt;code&gt;cover&lt;/code&gt;, &lt;code&gt;fmt&lt;/code&gt;, &lt;code&gt;vet&lt;/code&gt;, &lt;code&gt;trace&lt;/code&gt; czy &lt;code&gt;pprof&lt;/code&gt;.
 Znajomość tych narzędzi może być przydatna w trakcie rozmowy kwalifikacyjnej podczas sesji pair-programing, kiedy developer poprosi was o optymalizację albo naprawienie danej aplikacji.&lt;/p&gt;
 
-&lt;p&gt;Ponadto, przydać się może doświadczenie z bardziej zaawansowanymi opcjami kompilacji. Dla przykładu kiedy chcemy przeprowadzić &lt;a href=&#34;https://en.wikipedia.org/wiki/Escape_analysis&#34;&gt;Escape Analysis&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Ponadto, przydać się może doświadczenie z bardziej zaawansowanymi opcjami kompilacji.
+Dla przykładu kiedy chcemy przeprowadzić &lt;a href=&#34;https://en.wikipedia.org/wiki/Escape_analysis&#34;&gt;Escape Analysis&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2 id=&#34;współdzielenie-danych-i-synchronizacja:1ee101fad5fbad352ad8ecdf4216a0b4&#34;&gt;Współdzielenie danych i synchronizacja&lt;/h2&gt;
 
-&lt;p&gt;Kanały są jednym z najbardziej rozpoznawalnych aspektów Go. Ich poprawne stosowanie przysparza kandydatom jednak wiele problemu. To zły znak. Przejawia się to najczęściej zbyt dużą ich ilością, dodatkowo niepotrzebnie użytą strukturą &lt;code&gt;sync.WaitGroup&lt;/code&gt; czy poprostu stosowaniem ich tam, gdzie jest to zbędne.&lt;/p&gt;
+&lt;p&gt;Kanały są jednym z najbardziej rozpoznawalnych aspektów &lt;strong&gt;Go&lt;/strong&gt;.
+Ich poprawne stosowanie przysparza kandydatom jednak wiele problemów.
+To zły znak.
+Przejawia się to najczęściej zbyt dużą ich ilością, dodatkowo niepotrzebnie użytą strukturą &lt;code&gt;sync.WaitGroup&lt;/code&gt; czy poprostu stosowaniem ich tam, gdzie jest to zbędne.&lt;/p&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;Share memory by communicating; don&amp;rsquo;t communicate by sharing memory&lt;/p&gt;
@@ -81,7 +94,8 @@ Znajomość tych narzędzi może być przydatna w trakcie rozmowy kwalifikacyjne
 
 &lt;h2 id=&#34;przerwania:1ee101fad5fbad352ad8ecdf4216a0b4&#34;&gt;Przerwania&lt;/h2&gt;
 
-&lt;p&gt;We wszelkiego rodzaju aplikacjach webowych czy też systemach rozproszonych, możliwość przerwania przetwarzania żądania jest na wagę złota. Taki mechanizm pozwala kontrolować zużycie zasobów (ich zwalnianie) oraz przestrzec się przed katastrofalnym w skutkach efektem domina.&lt;/p&gt;
+&lt;p&gt;We wszelkiego rodzaju aplikacjach webowych czy też systemach rozproszonych, możliwość przerwania przetwarzania żądania jest na wagę złota.
+Taki mechanizm pozwala kontrolować zużycie zasobów (ich zwalnianie) oraz przestrzec się przed katastrofalnym w skutkach efektem domina.&lt;/p&gt;
 
 &lt;p&gt;Znajomość paczki &lt;a href=&#34;https://golang.org/pkg/context&#34;&gt;context&lt;/a&gt; jest tutaj kluczowa.
 Za jej pomocą jesteśmy w stanie anulować żądania oraz procesy, a także określać górną granice czasu, w którym nasza logika ma zostać wykonana.&lt;/p&gt;
@@ -95,19 +109,24 @@ Za jej pomocą jesteśmy w stanie anulować żądania oraz procesy, a także okr
 
 &lt;h2 id=&#34;whitebox-monitoring-tracing:1ee101fad5fbad352ad8ecdf4216a0b4&#34;&gt;Whitebox Monitoring/Tracing&lt;/h2&gt;
 
-&lt;p&gt;Ostatecznie nasz kod ląduje na produkcji. Rolą dewelopera jest udostępnienie metryk, które pomogą określić wydajność aplikacji oraz zweryfikować jej poprawne działanie.&lt;/p&gt;
+&lt;p&gt;Ostatecznie nasz kod ląduje na produkcji.
+Rolą dewelopera jest udostępnienie metryk, które pomogą określić wydajność aplikacji oraz zweryfikować jej poprawne działanie.&lt;/p&gt;
 
-&lt;p&gt;Do monitorowania najczęstszym wyborem, w przypadku zespołów, czysto Golangowych jest &lt;a href=&#34;https://prometheus.io&#34;&gt;Prometheus&lt;/a&gt;. Najpewniej żadne zadanie testowe nie będzie wymagać jego zastosowania, ale znajomość zagadnienia jest jak najbardziej na plus.&lt;/p&gt;
+&lt;p&gt;Do monitorowania najczęstszym wyborem, w przypadku zespołów, czysto Golangowych jest &lt;a href=&#34;https://prometheus.io&#34;&gt;Prometheus&lt;/a&gt;.
+Najpewniej żadne zadanie testowe nie będzie wymagać jego zastosowania, ale znajomość zagadnienia jest jak najbardziej na plus.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Tracing_(software)&#34;&gt;Tracing&lt;/a&gt; może zostać zaimplementowany na wiele sposobów. Na początek, znajomość paczki &lt;a href=&#34;https://godoc.org/golang.org/x/net/trace&#34;&gt;x/net/trace&lt;/a&gt; powinna wystarczyć.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Tracing_(software)&#34;&gt;Tracing&lt;/a&gt; może zostać zaimplementowany na wiele sposobów.
+Na początek, znajomość paczki &lt;a href=&#34;https://godoc.org/golang.org/x/net/trace&#34;&gt;x/net/trace&lt;/a&gt; powinna wystarczyć.&lt;/p&gt;
 
 &lt;h2 id=&#34;podsumowanie:1ee101fad5fbad352ad8ecdf4216a0b4&#34;&gt;Podsumowanie&lt;/h2&gt;
 
-&lt;p&gt;Mimo iż Go jest stosowane przewarznie w zastosowaniach serwerowych/cloudowych, nie musi to być zasadą. Dlatego jeszcze raz chciałbym podkreślić, że reprezentuję tutaj jedynie mój prywatny punkt widzenia.&lt;/p&gt;
+&lt;p&gt;Mimo iż &lt;strong&gt;Golang&lt;/strong&gt; jest stosowany przewarznie w zastosowaniach serwerowych/cloudowych, nie musi to być zasadą.&lt;/p&gt;
 
-&lt;p&gt;Wiele tematów takich jak testowanie, benchmnarking czy stosowanie paczki &lt;code&gt;http&lt;/code&gt; umyślnie zignorowałem. Skupiłem się jedynie na aspektach, które najczęsciej są  pomijane przez kandydatów, których miałem przyjemność ewaluować.&lt;/p&gt;
+&lt;p&gt;Wiele tematów takich jak testowanie, benchmnarking czy stosowanie paczki &lt;code&gt;http&lt;/code&gt; umyślnie zignorowałem.
+Skupiłem się jedynie na aspektach, które najczęsciej są pomijane przez kandydatów, których miałem przyjemność ewaluować.&lt;/p&gt;
 
-&lt;p&gt;Mam nadzieję, że powyższy tekst pomoże komuś w znalezieniu upragnionej pracy. Wszystkim przyszłym &lt;a href=&#34;https://blog.golang.org/gopher&#34;&gt;gopherom&lt;/a&gt; życzę powodzenia.&lt;/p&gt;
+&lt;p&gt;Mam nadzieję, że powyższy tekst pomoże komuś w znalezieniu upragnionej pracy.
+Wszystkim przyszłym &lt;a href=&#34;https://blog.golang.org/gopher&#34;&gt;gopherom&lt;/a&gt; życzę powodzenia.&lt;/p&gt;
 </description>
     </item>
     

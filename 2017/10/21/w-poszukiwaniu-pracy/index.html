@@ -119,7 +119,7 @@ Na etapie Early Access jest <a href="https://www.jetbrains.com/go/">komercyjne I
 Golang jest także preinstalowany w wielu dystrybucjach linuxa.</p>
 
 <p>Dlaczego o tym wszystkim piszę?
-Odnoszę wrażenie, że pomimo tych wszystkich lat Golang jest postrzegany jako coś egzotycznego i niszowego.
+Odnoszę wrażenie, że pomimo tych wszystkich lat <strong>Golang</strong> jest postrzegany jako coś egzotycznego i niszowego.
 Przekłada się to bezpośrednio na podejscie kandydatów do procesu rekrutacji -
 świadomość kandydata stoi w miejscu, a oczekiwania coraz bardziej doświadczonych zespołów rosną.</p>
 
@@ -127,12 +127,20 @@ Przekłada się to bezpośrednio na podejscie kandydatów do procesu rekrutacji 
 
 <h2 id="filozofia:1ee101fad5fbad352ad8ecdf4216a0b4">Filozofia</h2>
 
-<p>Go nie bez powodu uchodzi za język prosty do nauki. W mojej ocenie jest to także jezyk zaskakująco trudny do opanowania.</p>
+<p><strong>Golang</strong> nie bez powodu uchodzi za język prosty do nauki.
+Jego składnia jest prosta, liczba słów kluczowych niewielka, a biblioteka standardowa kompletna.</p>
 
-<p>Trywialnym jest napisanie bylejakiego kodu. Trochę trudniejsze ale ciągle łatwe jest napisanie kodu przekombinowanego, z masą niepotrzebnej abstrakcji i komponentów. Napisanie kodu, który jest genialny w swojej prostocie jest naprawde trudne.</p>
+<p>W mojej ocenie jest to także jezyk (co zaskakujące) znacznie trudniejszy do opanowania niż by się mogło wydawać.</p>
 
-<p>Z moich obserwacji wynika, że czas potrzebny programistom na oduczenie się nawyków przyniesionych z wcześniejszych technologi jest nieakceptowanie długi.
-Co do zasady sądze że powinno odrzucać się kandydatów, którzy nie pojeli filozofii Go w poziomie wystarczającym. Jest to zwyczajnie zbyt kosztowne i niebezpieczne dla kultury wytworzeonej w zespole.</p>
+<p>Trywialnym jest napisanie bylejakiego kodu.
+Trochę trudniejsze ale ciągle łatwe jest napisanie kodu przekombinowanego, z masą niepotrzebnej abstrakcji i komponentów.
+Napisanie kodu, który jest genialny w swojej prostocie jest naprawde trudne.
+A o prostotę przecież tutaj chodzi.</p>
+
+<p>Z moich obserwacji wynika, że czas potrzebny programistom na oduczenie się nawyków przyniesionych z wcześniejszych technologi jest nieakceptowalnie długi.
+Nie każdy także musi podzielać wizję twórców Go, a to co przyciągneło go do języka to obietnica wydajności i wsparcia równoległego przetwarzania.
+Co do zasady sądze że powinno odrzucać się kandydatów, którzy nie podzielają filozofii <strong>Go</strong>.
+Jest to zwyczajnie zbyt kosztowne i niebezpieczne dla kultury wytworzeonej w zespole.</p>
 
 <ul>
 <li><a href="https://www.youtube.com/watch?v=rFejpH_tAHM">Simplicity is Complicated</a></li>
@@ -141,14 +149,19 @@ Co do zasady sądze że powinno odrzucać się kandydatów, którzy nie pojeli f
 
 <h2 id="narzędzia:1ee101fad5fbad352ad8ecdf4216a0b4">Narzędzia</h2>
 
-<p>Jednym z największych atutów Go jest jego środowisko developerskie. Poza językiem instalator instaluje również szereg narzędzi, powiedziałbym niezbędnych w codziennej pracy takich jak <code>cover</code>, <code>fmt</code>, <code>vet</code>, <code>trace</code> czy <code>pprof</code>.
+<p>Jednym z największych atutów <strong>Go</strong> jest jego środowisko developerskie.
+Poza językiem instalator instaluje również szereg narzędzi, powiedziałbym niezbędnych w codziennej pracy takich jak <code>cover</code>, <code>fmt</code>, <code>vet</code>, <code>trace</code> czy <code>pprof</code>.
 Znajomość tych narzędzi może być przydatna w trakcie rozmowy kwalifikacyjnej podczas sesji pair-programing, kiedy developer poprosi was o optymalizację albo naprawienie danej aplikacji.</p>
 
-<p>Ponadto, przydać się może doświadczenie z bardziej zaawansowanymi opcjami kompilacji. Dla przykładu kiedy chcemy przeprowadzić <a href="https://en.wikipedia.org/wiki/Escape_analysis">Escape Analysis</a>.</p>
+<p>Ponadto, przydać się może doświadczenie z bardziej zaawansowanymi opcjami kompilacji.
+Dla przykładu kiedy chcemy przeprowadzić <a href="https://en.wikipedia.org/wiki/Escape_analysis">Escape Analysis</a>.</p>
 
 <h2 id="współdzielenie-danych-i-synchronizacja:1ee101fad5fbad352ad8ecdf4216a0b4">Współdzielenie danych i synchronizacja</h2>
 
-<p>Kanały są jednym z najbardziej rozpoznawalnych aspektów Go. Ich poprawne stosowanie przysparza kandydatom jednak wiele problemu. To zły znak. Przejawia się to najczęściej zbyt dużą ich ilością, dodatkowo niepotrzebnie użytą strukturą <code>sync.WaitGroup</code> czy poprostu stosowaniem ich tam, gdzie jest to zbędne.</p>
+<p>Kanały są jednym z najbardziej rozpoznawalnych aspektów <strong>Go</strong>.
+Ich poprawne stosowanie przysparza kandydatom jednak wiele problemów.
+To zły znak.
+Przejawia się to najczęściej zbyt dużą ich ilością, dodatkowo niepotrzebnie użytą strukturą <code>sync.WaitGroup</code> czy poprostu stosowaniem ich tam, gdzie jest to zbędne.</p>
 
 <blockquote>
 <p>Share memory by communicating; don&rsquo;t communicate by sharing memory</p>
@@ -165,7 +178,8 @@ Znajomość tych narzędzi może być przydatna w trakcie rozmowy kwalifikacyjne
 
 <h2 id="przerwania:1ee101fad5fbad352ad8ecdf4216a0b4">Przerwania</h2>
 
-<p>We wszelkiego rodzaju aplikacjach webowych czy też systemach rozproszonych, możliwość przerwania przetwarzania żądania jest na wagę złota. Taki mechanizm pozwala kontrolować zużycie zasobów (ich zwalnianie) oraz przestrzec się przed katastrofalnym w skutkach efektem domina.</p>
+<p>We wszelkiego rodzaju aplikacjach webowych czy też systemach rozproszonych, możliwość przerwania przetwarzania żądania jest na wagę złota.
+Taki mechanizm pozwala kontrolować zużycie zasobów (ich zwalnianie) oraz przestrzec się przed katastrofalnym w skutkach efektem domina.</p>
 
 <p>Znajomość paczki <a href="https://golang.org/pkg/context">context</a> jest tutaj kluczowa.
 Za jej pomocą jesteśmy w stanie anulować żądania oraz procesy, a także określać górną granice czasu, w którym nasza logika ma zostać wykonana.</p>
@@ -179,19 +193,24 @@ Za jej pomocą jesteśmy w stanie anulować żądania oraz procesy, a także okr
 
 <h2 id="whitebox-monitoring-tracing:1ee101fad5fbad352ad8ecdf4216a0b4">Whitebox Monitoring/Tracing</h2>
 
-<p>Ostatecznie nasz kod ląduje na produkcji. Rolą dewelopera jest udostępnienie metryk, które pomogą określić wydajność aplikacji oraz zweryfikować jej poprawne działanie.</p>
+<p>Ostatecznie nasz kod ląduje na produkcji.
+Rolą dewelopera jest udostępnienie metryk, które pomogą określić wydajność aplikacji oraz zweryfikować jej poprawne działanie.</p>
 
-<p>Do monitorowania najczęstszym wyborem, w przypadku zespołów, czysto Golangowych jest <a href="https://prometheus.io">Prometheus</a>. Najpewniej żadne zadanie testowe nie będzie wymagać jego zastosowania, ale znajomość zagadnienia jest jak najbardziej na plus.</p>
+<p>Do monitorowania najczęstszym wyborem, w przypadku zespołów, czysto Golangowych jest <a href="https://prometheus.io">Prometheus</a>.
+Najpewniej żadne zadanie testowe nie będzie wymagać jego zastosowania, ale znajomość zagadnienia jest jak najbardziej na plus.</p>
 
-<p><a href="https://en.wikipedia.org/wiki/Tracing_(software)">Tracing</a> może zostać zaimplementowany na wiele sposobów. Na początek, znajomość paczki <a href="https://godoc.org/golang.org/x/net/trace">x/net/trace</a> powinna wystarczyć.</p>
+<p><a href="https://en.wikipedia.org/wiki/Tracing_(software)">Tracing</a> może zostać zaimplementowany na wiele sposobów.
+Na początek, znajomość paczki <a href="https://godoc.org/golang.org/x/net/trace">x/net/trace</a> powinna wystarczyć.</p>
 
 <h2 id="podsumowanie:1ee101fad5fbad352ad8ecdf4216a0b4">Podsumowanie</h2>
 
-<p>Mimo iż Go jest stosowane przewarznie w zastosowaniach serwerowych/cloudowych, nie musi to być zasadą. Dlatego jeszcze raz chciałbym podkreślić, że reprezentuję tutaj jedynie mój prywatny punkt widzenia.</p>
+<p>Mimo iż <strong>Golang</strong> jest stosowany przewarznie w zastosowaniach serwerowych/cloudowych, nie musi to być zasadą.</p>
 
-<p>Wiele tematów takich jak testowanie, benchmnarking czy stosowanie paczki <code>http</code> umyślnie zignorowałem. Skupiłem się jedynie na aspektach, które najczęsciej są  pomijane przez kandydatów, których miałem przyjemność ewaluować.</p>
+<p>Wiele tematów takich jak testowanie, benchmnarking czy stosowanie paczki <code>http</code> umyślnie zignorowałem.
+Skupiłem się jedynie na aspektach, które najczęsciej są pomijane przez kandydatów, których miałem przyjemność ewaluować.</p>
 
-<p>Mam nadzieję, że powyższy tekst pomoże komuś w znalezieniu upragnionej pracy. Wszystkim przyszłym <a href="https://blog.golang.org/gopher">gopherom</a> życzę powodzenia.</p>
+<p>Mam nadzieję, że powyższy tekst pomoże komuś w znalezieniu upragnionej pracy.
+Wszystkim przyszłym <a href="https://blog.golang.org/gopher">gopherom</a> życzę powodzenia.</p>
 
 </div>
 

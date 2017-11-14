@@ -7,8 +7,166 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>pl</language>
     <copyright>Piotr Kowalczuk</copyright>
-    <lastBuildDate>Sat, 21 Oct 2017 19:56:18 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 14 Nov 2017 00:12:21 +0100</lastBuildDate>
     <atom:link href="https://piotrkowalczuk.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Prometheus</title>
+      <link>https://piotrkowalczuk.github.io/2017/11/14/prometheus-monitorowanie-serwera-http/</link>
+      <pubDate>Tue, 14 Nov 2017 00:12:21 +0100</pubDate>
+      
+      <guid>https://piotrkowalczuk.github.io/2017/11/14/prometheus-monitorowanie-serwera-http/</guid>
+      <description>
+
+&lt;h2 id=&#34;czym-jest-prometheus:344187460f15e6ef8677e80bc40cccdc&#34;&gt;Czym jest Prometheus?&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://prometheus.io&#34;&gt;Prometheus&lt;/a&gt; jest to ekosystem do monitorowania napisany przez programistów z &lt;a href=&#34;https://soundcloud.com&#34;&gt;SoundCloud&lt;/a&gt;.
+Jak możecie się przekonać przeglądając oficjalne konto na &lt;a href=&#34;https://github.com/prometheus&#34;&gt;githubie&lt;/a&gt;, większość środowiska jest napisana w &lt;a href=&#34;http://golang.org&#34;&gt;Go&lt;/a&gt;.
+Od 2016 roku projekt jest też częścią &lt;a href=&#34;https://www.cncf.io&#34;&gt;Cloud Native Computing Foundation&lt;/a&gt; obok takich rozwiązań jak &lt;a href=&#34;https://kubernetes.io&#34;&gt;kubernetes&lt;/a&gt;, &lt;a href=&#34;http://grpc.io&#34;&gt;gRPC&lt;/a&gt; czy &lt;a href=&#34;http://opentracing.io&#34;&gt;OpenTracing&lt;/a&gt;.
+Daje nam pewność że projekt będzie rozwijany długie lata, będzie ewoluował razem z resztą środowiska, a także wsparcie dla &lt;strong&gt;Go&lt;/strong&gt; będzie stało na najwyższym poziomie.&lt;/p&gt;
+
+&lt;p&gt;Skupie się tutaj na ostatnie wersji oznaczonej tagiem &lt;code&gt;v0.8.0&lt;/code&gt;.
+W tej wersji wiele funkcji zostało oznaczonych jako &lt;code&gt;DEPRECATED&lt;/code&gt; i zostaną one przeze mnie pominięte.
+Zalecana wersja Go to 1.9+.&lt;/p&gt;
+
+&lt;h2 id=&#34;biblioteka:344187460f15e6ef8677e80bc40cccdc&#34;&gt;Biblioteka&lt;/h2&gt;
+
+&lt;p&gt;Zasadniczo &lt;strong&gt;Prometheus&lt;/strong&gt; jako serwer centralny musi być swiadomy istnienia aplikacji która jest monitorowana.
+Tylko wtedy jest on w stanie pobrać metryki ze wskazanego endpointu.
+Z pomocą przychodzi nam biblioteka &lt;a href=&#34;https://godoc.org/github.com/prometheus/client_golang/prometheus/promhttp&#34;&gt;promhttp&lt;/a&gt; która jest częścią składową oficjalnej &lt;a href=&#34;https://github.com/prometheus/client_golang/tree/master/prometheus&#34;&gt;paczki&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://godoc.org/github.com/prometheus/client_golang/prometheus/promhttp#HandlerFor&#34;&gt;promhttp.HandlerFor&lt;/a&gt; pozwala utworzyć endpoint dla danego &lt;a href=&#34;https://godoc.org/github.com/prometheus/client_golang/prometheus#Gatherer&#34;&gt;prometheus.Gatherer&amp;rsquo;a&lt;/a&gt;.
+Interfejs ten jest na przykład implementowany przez &lt;a href=&#34;https://godoc.org/github.com/prometheus/client_golang/prometheus#pkg-variables&#34;&gt;prometheus.DefaultRegisterer&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Ponadto biblioteka ta zawiera garść dekoratorów ktore pozwolą nam zbierać informacje na temat naszej aplikacji:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://godoc.org/github.com/prometheus/client_golang/prometheus/promhttp#InstrumentHandlerCounter&#34;&gt;promhttp.InstrumentHandlerCounter&lt;/a&gt; - całkowita liczba przetworzonych żądań&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://godoc.org/github.com/prometheus/client_golang/prometheus/promhttp#InstrumentHandlerDuration&#34;&gt;promhttp.InstrumentHandlerDuration&lt;/a&gt; - czas trwania żądania&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://godoc.org/github.com/prometheus/client_golang/prometheus/promhttp#InstrumentHandlerTimeToWriteHeader&#34;&gt;promhttp.InstrumentHandlerTimeToWriteHeader&lt;/a&gt; - podobnie jak poprzedni tylko do czasu wysłania nagłówków&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://godoc.org/github.com/prometheus/client_golang/prometheus/promhttp#InstrumentHandlerInFlight&#34;&gt;promhttp.InstrumentHandlerInFlight&lt;/a&gt; - liczba obecnie przetwarzanych żądań (w trakcie)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://godoc.org/github.com/prometheus/client_golang/prometheus/promhttp#InstrumentHandlerRequestSize&#34;&gt;promhttp.InstrumentHandlerRequestSize&lt;/a&gt; - wielkość żądania&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;implementacja:344187460f15e6ef8677e80bc40cccdc&#34;&gt;Implementacja&lt;/h2&gt;
+
+&lt;p&gt;Jak widać żeby zacząc nie trzeba wiele się napracować, większość potrzebnych nam składników jest już dostępna.
+Brakujący element to &lt;a href=&#34;https://godoc.org/github.com/prometheus/client_golang/prometheus#Collector&#34;&gt;kolektory&lt;/a&gt; które musimy zainicjować własnoręcznie.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;duration := prometheus.NewHistogramVec(
+    prometheus.HistogramOpts{
+        Namespace: &amp;quot;acme&amp;quot;,
+        Subsystem: &amp;quot;your_app&amp;quot;,
+        Name:      &amp;quot;http_durations_histogram_seconds&amp;quot;,
+        Help:      &amp;quot;Request time duration.&amp;quot;,
+    },
+    []string{&amp;quot;code&amp;quot;, &amp;quot;method&amp;quot;},
+)
+requests := prometheus.NewCounterVec(
+    prometheus.CounterOpts{
+        Namespace: &amp;quot;acme&amp;quot;,
+        Subsystem: &amp;quot;your_app&amp;quot;,
+        Name:      &amp;quot;http_requests_total&amp;quot;,
+        Help:      &amp;quot;Total number of requests received.&amp;quot;,
+    },
+    []string{&amp;quot;code&amp;quot;, &amp;quot;method&amp;quot;},
+)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Oba one muszą zostać zarejestrowane a następnie przekazane jako argument do wyżej wymienionych dekoratorów.
+Możemy trochę usprawnić ten process poprzez wprowadzenie dodatkowej struktóry.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;type decorator struct {
+	duration *prometheus.HistogramVec
+	requests *prometheus.CounterVec
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Aby spełniać swoje zadanie, struktóra ta powinna implementować interfejs &lt;a href=&#34;https://godoc.org/github.com/prometheus/client_golang/prometheus#Collector&#34;&gt;prometheus.Collector&lt;/a&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;// Describe implements prometheus Collector interface.
+func (d *decorator) Describe(in chan&amp;lt;- *prometheus.Desc) {
+	d.duration.Describe(in)
+	d.requests.Describe(in)
+}
+
+// Collect implements prometheus Collector interface.
+func (d *decorator) Collect(in chan&amp;lt;- prometheus.Metric) {
+	d.duration.Collect(in)
+	d.requests.Collect(in)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Dodatkowo możemy zredukować duplikacje kodu implementując dodatkową metodę.
+Jej zadaniem będzie dekorowanie danego handlera szeregiem funkcji.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func (d *decorator) instrument(handler http.Handler) http.Handler {
+	return promhttp.InstrumentHandlerDuration(
+		d.duration,
+		promhttp.InstrumentHandlerCounter(
+			d.requests,
+			handler,
+		),
+	)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Naszym ostatnim krokiem będzie połączenie tego ze sobą i udostępnienie metryk.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;func main() {
+    dec := &amp;amp;decorator{
+        // inicjalizacja
+    }
+
+    prometheus.DefaultRegisterer.Register(dec)
+
+    go func() {
+        dbg := http.NewServeMux()
+        dbg.Handle(&amp;quot;/metrics&amp;quot;, promhttp.HandlerFor(
+            prometheus.DefaultGatherer,
+            promhttp.HandlerOpts{},
+        ))
+        http.ListenAndServe(&amp;quot;0.0.0.0:8081&amp;quot;, dbg)
+    }()
+
+    app := http.NewServeMux()
+    app.Handle(&amp;quot;/&amp;quot;, dec.instrument(&amp;amp;handler{}))
+    http.ListenAndServe(&amp;quot;0.0.0.0:8080&amp;quot;, app)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Aplikacja przez nas napisana będzie nasłuchiwać na dwóch portach.
+Pierwszy &lt;code&gt;8080&lt;/code&gt;, zarezerowany dla aplikacji właściwej.
+Drugi &lt;code&gt;8081&lt;/code&gt;, na którym prometheus będzie miał dostęp do metryk.
+Chciałbym zwrócic uwagę że router został w drugim przypadku zastosowany nie bez powodu.
+Pozwoli on w przyszłości udostępnić na tym samym porcie healthcheck czy też endpointy &lt;a href=&#34;https://golang.org/pkg/net/http/pprof/&#34;&gt;pprof&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;weryfikacja:344187460f15e6ef8677e80bc40cccdc&#34;&gt;Weryfikacja&lt;/h2&gt;
+
+&lt;p&gt;Aby sprawdzić czy aplikacja zwraca poprawny wynik posłużymy się aplikacją powłoki systemowej &lt;code&gt;curl&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ curl http://localhost:8080
+It works!
+$ curl -s localhost:8081/metrics | grep &#39;acme_your_app_http_requests_total{code=&amp;quot;200&amp;quot;,method=&amp;quot;get&amp;quot;}&#39;
+acme_your_app_http_requests_total{code=&amp;quot;200&amp;quot;,method=&amp;quot;get&amp;quot;} 1
+$ curl http://localhost:8080
+It works!
+$ curl -s localhost:8081/metrics | grep &#39;acme_your_app_http_requests_total{code=&amp;quot;200&amp;quot;,method=&amp;quot;get&amp;quot;}&#39;
+acme_your_app_http_requests_total{code=&amp;quot;200&amp;quot;,method=&amp;quot;get&amp;quot;} 2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Zwracana wartość odpowiada ilości wysłanych żądań.
+Monitoring działa bez zarzutu.&lt;/p&gt;
+
+&lt;h2 id=&#34;podsumowanie:344187460f15e6ef8677e80bc40cccdc&#34;&gt;Podsumowanie&lt;/h2&gt;
+
+&lt;p&gt;Aby utrzymać przejrzystość przykładów nie zawierają one wszystkich wspieranych metryk.
+Podczas ich implementacji warto zapoznać się z dokumentacją dekoratora.
+Znajdują się tam informacje o wspieranych etykietach.&lt;/p&gt;
+
+&lt;p&gt;Pełny kod źródłowy aplikacji można znaleźć &lt;a href=&#34;https://github.com/piotrkowalczuk/blog/tree/master/examples/prometheus-monitorowanie-serwera-http&#34;&gt;tutaj&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>W Poszukiwaniu Pracy</title>
@@ -35,7 +193,7 @@ Na etapie Early Access jest &lt;a href=&#34;https://www.jetbrains.com/go/&#34;&g
 Golang jest także preinstalowany w wielu dystrybucjach linuxa.&lt;/p&gt;
 
 &lt;p&gt;Dlaczego o tym wszystkim piszę?
-Odnoszę wrażenie, że pomimo tych wszystkich lat Golang jest postrzegany jako coś egzotycznego i niszowego.
+Odnoszę wrażenie, że pomimo tych wszystkich lat &lt;strong&gt;Golang&lt;/strong&gt; jest postrzegany jako coś egzotycznego i niszowego.
 Przekłada się to bezpośrednio na podejscie kandydatów do procesu rekrutacji -
 świadomość kandydata stoi w miejscu, a oczekiwania coraz bardziej doświadczonych zespołów rosną.&lt;/p&gt;
 
@@ -43,12 +201,20 @@ Przekłada się to bezpośrednio na podejscie kandydatów do procesu rekrutacji 
 
 &lt;h2 id=&#34;filozofia:1ee101fad5fbad352ad8ecdf4216a0b4&#34;&gt;Filozofia&lt;/h2&gt;
 
-&lt;p&gt;Go nie bez powodu uchodzi za język prosty do nauki. W mojej ocenie jest to także jezyk zaskakująco trudny do opanowania.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Golang&lt;/strong&gt; nie bez powodu uchodzi za język prosty do nauki.
+Jego składnia jest prosta, liczba słów kluczowych niewielka, a biblioteka standardowa kompletna.&lt;/p&gt;
 
-&lt;p&gt;Trywialnym jest napisanie bylejakiego kodu. Trochę trudniejsze ale ciągle łatwe jest napisanie kodu przekombinowanego, z masą niepotrzebnej abstrakcji i komponentów. Napisanie kodu, który jest genialny w swojej prostocie jest naprawde trudne.&lt;/p&gt;
+&lt;p&gt;W mojej ocenie jest to także jezyk (co zaskakujące) znacznie trudniejszy do opanowania niż by się mogło wydawać.&lt;/p&gt;
 
-&lt;p&gt;Z moich obserwacji wynika, że czas potrzebny programistom na oduczenie się nawyków przyniesionych z wcześniejszych technologi jest nieakceptowanie długi.
-Co do zasady sądze że powinno odrzucać się kandydatów, którzy nie pojeli filozofii Go w poziomie wystarczającym. Jest to zwyczajnie zbyt kosztowne i niebezpieczne dla kultury wytworzeonej w zespole.&lt;/p&gt;
+&lt;p&gt;Trywialnym jest napisanie bylejakiego kodu.
+Trochę trudniejsze ale ciągle łatwe jest napisanie kodu przekombinowanego, z masą niepotrzebnej abstrakcji i komponentów.
+Napisanie kodu, który jest genialny w swojej prostocie jest naprawde trudne.
+A o prostotę przecież tutaj chodzi.&lt;/p&gt;
+
+&lt;p&gt;Z moich obserwacji wynika, że czas potrzebny programistom na oduczenie się nawyków przyniesionych z wcześniejszych technologi jest nieakceptowalnie długi.
+Nie każdy także musi podzielać wizję twórców Go, a to co przyciągneło go do języka to obietnica wydajności i wsparcia równoległego przetwarzania.
+Co do zasady sądze że powinno odrzucać się kandydatów, którzy nie podzielają filozofii &lt;strong&gt;Go&lt;/strong&gt;.
+Jest to zwyczajnie zbyt kosztowne i niebezpieczne dla kultury wytworzeonej w zespole.&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=rFejpH_tAHM&#34;&gt;Simplicity is Complicated&lt;/a&gt;&lt;/li&gt;
@@ -57,14 +223,19 @@ Co do zasady sądze że powinno odrzucać się kandydatów, którzy nie pojeli f
 
 &lt;h2 id=&#34;narzędzia:1ee101fad5fbad352ad8ecdf4216a0b4&#34;&gt;Narzędzia&lt;/h2&gt;
 
-&lt;p&gt;Jednym z największych atutów Go jest jego środowisko developerskie. Poza językiem instalator instaluje również szereg narzędzi, powiedziałbym niezbędnych w codziennej pracy takich jak &lt;code&gt;cover&lt;/code&gt;, &lt;code&gt;fmt&lt;/code&gt;, &lt;code&gt;vet&lt;/code&gt;, &lt;code&gt;trace&lt;/code&gt; czy &lt;code&gt;pprof&lt;/code&gt;.
+&lt;p&gt;Jednym z największych atutów &lt;strong&gt;Go&lt;/strong&gt; jest jego środowisko developerskie.
+Poza językiem instalator instaluje również szereg narzędzi, powiedziałbym niezbędnych w codziennej pracy takich jak &lt;code&gt;cover&lt;/code&gt;, &lt;code&gt;fmt&lt;/code&gt;, &lt;code&gt;vet&lt;/code&gt;, &lt;code&gt;trace&lt;/code&gt; czy &lt;code&gt;pprof&lt;/code&gt;.
 Znajomość tych narzędzi może być przydatna w trakcie rozmowy kwalifikacyjnej podczas sesji pair-programing, kiedy developer poprosi was o optymalizację albo naprawienie danej aplikacji.&lt;/p&gt;
 
-&lt;p&gt;Ponadto, przydać się może doświadczenie z bardziej zaawansowanymi opcjami kompilacji. Dla przykładu kiedy chcemy przeprowadzić &lt;a href=&#34;https://en.wikipedia.org/wiki/Escape_analysis&#34;&gt;Escape Analysis&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Ponadto, przydać się może doświadczenie z bardziej zaawansowanymi opcjami kompilacji.
+Dla przykładu kiedy chcemy przeprowadzić &lt;a href=&#34;https://en.wikipedia.org/wiki/Escape_analysis&#34;&gt;Escape Analysis&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2 id=&#34;współdzielenie-danych-i-synchronizacja:1ee101fad5fbad352ad8ecdf4216a0b4&#34;&gt;Współdzielenie danych i synchronizacja&lt;/h2&gt;
 
-&lt;p&gt;Kanały są jednym z najbardziej rozpoznawalnych aspektów Go. Ich poprawne stosowanie przysparza kandydatom jednak wiele problemu. To zły znak. Przejawia się to najczęściej zbyt dużą ich ilością, dodatkowo niepotrzebnie użytą strukturą &lt;code&gt;sync.WaitGroup&lt;/code&gt; czy poprostu stosowaniem ich tam, gdzie jest to zbędne.&lt;/p&gt;
+&lt;p&gt;Kanały są jednym z najbardziej rozpoznawalnych aspektów &lt;strong&gt;Go&lt;/strong&gt;.
+Ich poprawne stosowanie przysparza kandydatom jednak wiele problemów.
+To zły znak.
+Przejawia się to najczęściej zbyt dużą ich ilością, dodatkowo niepotrzebnie użytą strukturą &lt;code&gt;sync.WaitGroup&lt;/code&gt; czy poprostu stosowaniem ich tam, gdzie jest to zbędne.&lt;/p&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;Share memory by communicating; don&amp;rsquo;t communicate by sharing memory&lt;/p&gt;
@@ -81,7 +252,8 @@ Znajomość tych narzędzi może być przydatna w trakcie rozmowy kwalifikacyjne
 
 &lt;h2 id=&#34;przerwania:1ee101fad5fbad352ad8ecdf4216a0b4&#34;&gt;Przerwania&lt;/h2&gt;
 
-&lt;p&gt;We wszelkiego rodzaju aplikacjach webowych czy też systemach rozproszonych, możliwość przerwania przetwarzania żądania jest na wagę złota. Taki mechanizm pozwala kontrolować zużycie zasobów (ich zwalnianie) oraz przestrzec się przed katastrofalnym w skutkach efektem domina.&lt;/p&gt;
+&lt;p&gt;We wszelkiego rodzaju aplikacjach webowych czy też systemach rozproszonych, możliwość przerwania przetwarzania żądania jest na wagę złota.
+Taki mechanizm pozwala kontrolować zużycie zasobów (ich zwalnianie) oraz przestrzec się przed katastrofalnym w skutkach efektem domina.&lt;/p&gt;
 
 &lt;p&gt;Znajomość paczki &lt;a href=&#34;https://golang.org/pkg/context&#34;&gt;context&lt;/a&gt; jest tutaj kluczowa.
 Za jej pomocą jesteśmy w stanie anulować żądania oraz procesy, a także określać górną granice czasu, w którym nasza logika ma zostać wykonana.&lt;/p&gt;
@@ -95,19 +267,24 @@ Za jej pomocą jesteśmy w stanie anulować żądania oraz procesy, a także okr
 
 &lt;h2 id=&#34;whitebox-monitoring-tracing:1ee101fad5fbad352ad8ecdf4216a0b4&#34;&gt;Whitebox Monitoring/Tracing&lt;/h2&gt;
 
-&lt;p&gt;Ostatecznie nasz kod ląduje na produkcji. Rolą dewelopera jest udostępnienie metryk, które pomogą określić wydajność aplikacji oraz zweryfikować jej poprawne działanie.&lt;/p&gt;
+&lt;p&gt;Ostatecznie nasz kod ląduje na produkcji.
+Rolą dewelopera jest udostępnienie metryk, które pomogą określić wydajność aplikacji oraz zweryfikować jej poprawne działanie.&lt;/p&gt;
 
-&lt;p&gt;Do monitorowania najczęstszym wyborem, w przypadku zespołów, czysto Golangowych jest &lt;a href=&#34;https://prometheus.io&#34;&gt;Prometheus&lt;/a&gt;. Najpewniej żadne zadanie testowe nie będzie wymagać jego zastosowania, ale znajomość zagadnienia jest jak najbardziej na plus.&lt;/p&gt;
+&lt;p&gt;Do monitorowania najczęstszym wyborem, w przypadku zespołów, czysto Golangowych jest &lt;a href=&#34;https://prometheus.io&#34;&gt;Prometheus&lt;/a&gt;.
+Najpewniej żadne zadanie testowe nie będzie wymagać jego zastosowania, ale znajomość zagadnienia jest jak najbardziej na plus.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Tracing_(software)&#34;&gt;Tracing&lt;/a&gt; może zostać zaimplementowany na wiele sposobów. Na początek, znajomość paczki &lt;a href=&#34;https://godoc.org/golang.org/x/net/trace&#34;&gt;x/net/trace&lt;/a&gt; powinna wystarczyć.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Tracing_(software)&#34;&gt;Tracing&lt;/a&gt; może zostać zaimplementowany na wiele sposobów.
+Na początek, znajomość paczki &lt;a href=&#34;https://godoc.org/golang.org/x/net/trace&#34;&gt;x/net/trace&lt;/a&gt; powinna wystarczyć.&lt;/p&gt;
 
 &lt;h2 id=&#34;podsumowanie:1ee101fad5fbad352ad8ecdf4216a0b4&#34;&gt;Podsumowanie&lt;/h2&gt;
 
-&lt;p&gt;Mimo iż Go jest stosowane przewarznie w zastosowaniach serwerowych/cloudowych, nie musi to być zasadą. Dlatego jeszcze raz chciałbym podkreślić, że reprezentuję tutaj jedynie mój prywatny punkt widzenia.&lt;/p&gt;
+&lt;p&gt;Mimo iż &lt;strong&gt;Golang&lt;/strong&gt; jest stosowany przewarznie w zastosowaniach serwerowych/cloudowych, nie musi to być zasadą.&lt;/p&gt;
 
-&lt;p&gt;Wiele tematów takich jak testowanie, benchmnarking czy stosowanie paczki &lt;code&gt;http&lt;/code&gt; umyślnie zignorowałem. Skupiłem się jedynie na aspektach, które najczęsciej są  pomijane przez kandydatów, których miałem przyjemność ewaluować.&lt;/p&gt;
+&lt;p&gt;Wiele tematów takich jak testowanie, benchmnarking czy stosowanie paczki &lt;code&gt;http&lt;/code&gt; umyślnie zignorowałem.
+Skupiłem się jedynie na aspektach, które najczęsciej są pomijane przez kandydatów, których miałem przyjemność ewaluować.&lt;/p&gt;
 
-&lt;p&gt;Mam nadzieję, że powyższy tekst pomoże komuś w znalezieniu upragnionej pracy. Wszystkim przyszłym &lt;a href=&#34;https://blog.golang.org/gopher&#34;&gt;gopherom&lt;/a&gt; życzę powodzenia.&lt;/p&gt;
+&lt;p&gt;Mam nadzieję, że powyższy tekst pomoże komuś w znalezieniu upragnionej pracy.
+Wszystkim przyszłym &lt;a href=&#34;https://blog.golang.org/gopher&#34;&gt;gopherom&lt;/a&gt; życzę powodzenia.&lt;/p&gt;
 </description>
     </item>
     
