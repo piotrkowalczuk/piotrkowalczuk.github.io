@@ -82,7 +82,7 @@ Możemy trochę usprawnić ten proces poprzez wprowadzenie dodatkowej struktury.
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Aby spełniać swoje zadanie, struktóra ta powinna implementować interfejs &lt;a href=&#34;https://godoc.org/github.com/prometheus/client_golang/prometheus#Collector&#34;&gt;prometheus.Collector&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Aby spełniać swoje zadanie, struktura ta powinna implementować interfejs &lt;a href=&#34;https://godoc.org/github.com/prometheus/client_golang/prometheus#Collector&#34;&gt;prometheus.Collector&lt;/a&gt;.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;// Describe implements prometheus Collector interface.
 func (d *decorator) Describe(in chan&amp;lt;- *prometheus.Desc) {
