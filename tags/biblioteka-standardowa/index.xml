@@ -14,10 +14,10 @@
     
     <item>
       <title>Kolejka Priorytetowa</title>
-      <link>https://piotrkowalczuk.github.io/2016/07/10/kolejka-priorytetowa/</link>
+      <link>https://piotrkowalczuk.github.io/blog/kolejka-priorytetowa/</link>
       <pubDate>Sun, 10 Jul 2016 20:12:00 +0200</pubDate>
       
-      <guid>https://piotrkowalczuk.github.io/2016/07/10/kolejka-priorytetowa/</guid>
+      <guid>https://piotrkowalczuk.github.io/blog/kolejka-priorytetowa/</guid>
       <description>Wstęp Kolejka priorytetowa to abstrakcyjna struktura danych gdzie elementy są uszeregowane według danej wielkości. Kolejka ta nie jest kolejką typu FIFO czy też LIFO. Ponieważ jest to ADT może być ona zaimplementowana na wielę sposobów:
  Kopiec binarny Kopiec dwumianowy Tablica Lista Rownoważone BST Kopiec Fibonacciego Kolejka Brodala  Zagadnienie Aby nadać problemowi bardziej intuicyjny charakter spróbujmy zastosować go w praktyce. Naszym zadaniem będzie utworzenie kolejki poleceń. Zadania mogą być dodawane w dowolnej kolejności.</description>
     </item>

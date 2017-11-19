@@ -3,23 +3,29 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://piotrkowalczuk.github.io/2017/11/14/monitorowanie-serwera-http-napisanego-w-golangu/</loc>
+    <loc>https://piotrkowalczuk.github.io/blog/monitorowanie-serwera-http-napisanego-w-golangu/</loc>
     <lastmod>2017-11-19T00:12:51+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://piotrkowalczuk.github.io/2017/10/21/w-poszukiwaniu-pracy-jako-programista-golang/</loc>
+    <loc>https://piotrkowalczuk.github.io/blog/w-poszukiwaniu-pracy-jako-programista-golang/</loc>
     <lastmod>2017-11-19T00:12:55+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://piotrkowalczuk.github.io/2016/07/10/kolejka-priorytetowa/</loc>
+    <loc>https://piotrkowalczuk.github.io/blog/kolejka-priorytetowa/</loc>
     <lastmod>2016-07-10T20:12:00+02:00</lastmod>
   </url>
   
   <url>
     <loc>https://piotrkowalczuk.github.io/tags/biblioteka-standardowa/</loc>
     <lastmod>2016-07-10T20:12:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://piotrkowalczuk.github.io/blog/</loc>
+    <lastmod>2017-11-19T00:12:51+01:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -43,12 +49,6 @@
   
   <url>
     <loc>https://piotrkowalczuk.github.io/</loc>
-    <lastmod>2017-11-19T00:12:51+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://piotrkowalczuk.github.io/post/</loc>
     <lastmod>2017-11-19T00:12:51+01:00</lastmod>
     <priority>0</priority>
   </url>

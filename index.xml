@@ -14,19 +14,19 @@
     
     <item>
       <title>Monitorowanie serwera HTTP napisanego w Golangu</title>
-      <link>https://piotrkowalczuk.github.io/2017/11/14/monitorowanie-serwera-http-napisanego-w-golangu/</link>
+      <link>https://piotrkowalczuk.github.io/blog/monitorowanie-serwera-http-napisanego-w-golangu/</link>
       <pubDate>Tue, 14 Nov 2017 00:12:21 +0100</pubDate>
       
-      <guid>https://piotrkowalczuk.github.io/2017/11/14/monitorowanie-serwera-http-napisanego-w-golangu/</guid>
+      <guid>https://piotrkowalczuk.github.io/blog/monitorowanie-serwera-http-napisanego-w-golangu/</guid>
       <description>Czym jest Prometheus? Prometheus jest to ekosystem do monitorowania napisany przez programistów z SoundCloud. Jak możecie się przekonać przeglądając oficjalne konto na githubie, większość środowiska jest napisana w Go. Od 2016 roku projekt jest też częścią Cloud Native Computing Foundation obok takich rozwiązań jak kubernetes, gRPC czy OpenTracing. Daje nam to pewność, że projekt będzie rozwijany przez długie lata, będzie ewoluował razem z resztą środowiska, a także wsparcie dla Go będzie stało na najwyższym poziomie.</description>
     </item>
     
     <item>
       <title>W poszukiwaniu pracy jako programista Golang</title>
-      <link>https://piotrkowalczuk.github.io/2017/10/21/w-poszukiwaniu-pracy-jako-programista-golang/</link>
+      <link>https://piotrkowalczuk.github.io/blog/w-poszukiwaniu-pracy-jako-programista-golang/</link>
       <pubDate>Sat, 21 Oct 2017 19:56:18 +0200</pubDate>
       
-      <guid>https://piotrkowalczuk.github.io/2017/10/21/w-poszukiwaniu-pracy-jako-programista-golang/</guid>
+      <guid>https://piotrkowalczuk.github.io/blog/w-poszukiwaniu-pracy-jako-programista-golang/</guid>
       <description>Wstęp Pierwsza stabilna wersja języka została wydana w marcu 2012 roku. Od tamtego czasu mineło już ponad 5 lat.
 W tym czasie w rankingu TIOBE język Go zanotował wzrost z 0.086% do 1.357% i plasuje się na pozycji 20. Mogłoby się to wydawać niewiele, ale jak porównamy to do Javascript&amp;rsquo;u posiadającego obecnie 3% udziału w rynku i będącego na pozycji 6, perspektywa trochę się zmienia.
 Język zajmuję też 9 miejsce pod względem ilości otwartych pull requestów na githubie, posiadając 285 tysięcy kontrybucji.</description>
@@ -34,10 +34,10 @@ Język zajmuję też 9 miejsce pod względem ilości otwartych pull requestów n
     
     <item>
       <title>Kolejka Priorytetowa</title>
-      <link>https://piotrkowalczuk.github.io/2016/07/10/kolejka-priorytetowa/</link>
+      <link>https://piotrkowalczuk.github.io/blog/kolejka-priorytetowa/</link>
       <pubDate>Sun, 10 Jul 2016 20:12:00 +0200</pubDate>
       
-      <guid>https://piotrkowalczuk.github.io/2016/07/10/kolejka-priorytetowa/</guid>
+      <guid>https://piotrkowalczuk.github.io/blog/kolejka-priorytetowa/</guid>
       <description>Wstęp Kolejka priorytetowa to abstrakcyjna struktura danych gdzie elementy są uszeregowane według danej wielkości. Kolejka ta nie jest kolejką typu FIFO czy też LIFO. Ponieważ jest to ADT może być ona zaimplementowana na wielę sposobów:
  Kopiec binarny Kopiec dwumianowy Tablica Lista Rownoważone BST Kopiec Fibonacciego Kolejka Brodala  Zagadnienie Aby nadać problemowi bardziej intuicyjny charakter spróbujmy zastosować go w praktyce. Naszym zadaniem będzie utworzenie kolejki poleceń. Zadania mogą być dodawane w dowolnej kolejności.</description>
     </item>

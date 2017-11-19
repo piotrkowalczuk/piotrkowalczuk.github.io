@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Golang on Piotr Kowalczuk Blog</title>
-    <link>https://piotrkowalczuk.github.io/tags/golang/</link>
-    <description>Recent content in Golang on Piotr Kowalczuk Blog</description>
+    <title>Blogs on Piotr Kowalczuk Blog</title>
+    <link>https://piotrkowalczuk.github.io/blog/</link>
+    <description>Recent content in Blogs on Piotr Kowalczuk Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pl</language>
     <copyright>Piotr Kowalczuk</copyright>
     <lastBuildDate>Tue, 14 Nov 2017 00:12:21 +0100</lastBuildDate>
     
-	<atom:link href="https://piotrkowalczuk.github.io/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://piotrkowalczuk.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
