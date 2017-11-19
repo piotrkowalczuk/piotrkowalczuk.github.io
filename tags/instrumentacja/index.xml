@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Prometheus on Piotr Kowalczuk Blog</title>
-    <link>https://piotrkowalczuk.github.io/tags/prometheus/</link>
-    <description>Recent content in Prometheus on Piotr Kowalczuk Blog</description>
+    <title>Instrumentacja on Piotr Kowalczuk Blog</title>
+    <link>https://piotrkowalczuk.github.io/tags/instrumentacja/</link>
+    <description>Recent content in Instrumentacja on Piotr Kowalczuk Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pl</language>
     <copyright>Piotr Kowalczuk</copyright>
     <lastBuildDate>Tue, 14 Nov 2017 00:12:21 +0100</lastBuildDate>
     
-	<atom:link href="https://piotrkowalczuk.github.io/tags/prometheus/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://piotrkowalczuk.github.io/tags/instrumentacja/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>

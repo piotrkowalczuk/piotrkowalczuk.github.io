@@ -1,0 +1,56 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres:9.5
+    container_name: postgres-9.5-mnemosyne
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+  mnemosyned-1:
+    container_name: mnemosyned-1
+    image: piotrkowalczuk/mnemosyne:latest
+    ports:
+      - 10010:8080
+      - 10011:8081
+    environment:
+      MNEMOSYNED_MONITORING: "true"
+      MNEMOSYNED_CLUSTER_LISTEN: mnemosyned-1:8080
+      MNEMOSYNED_CLUSTER_SEEDS: mnemosyned-1:8080,mnemosyned-2:8080
+      MNEMOSYNED_POSTGRES_SCHEMA: mnemosyne0
+    depends_on:
+      - postgres
+    healthcheck:
+      interval: 10s
+  mnemosyned-2:
+    container_name: mnemosyned-2
+    image: piotrkowalczuk/mnemosyne:latest
+    ports:
+      - 10020:8080
+      - 10021:8081
+    environment:
+      MNEMOSYNED_MONITORING: "true"
+      MNEMOSYNED_CLUSTER_LISTEN: mnemosyned-1:8080
+      MNEMOSYNED_CLUSTER_SEEDS: mnemosyned-1:8080,mnemosyned-2:8080
+      MNEMOSYNED_POSTGRES_SCHEMA: mnemosyne1
+    depends_on:
+      - postgres
+    healthcheck:
+      interval: 10s
+  mnemosyned-3:
+    container_name: mnemosyned-3
+    image: piotrkowalczuk/mnemosyne:latest
+    ports:
+      - 10030:8080
+      - 10031:8081
+    environment:
+      MNEMOSYNED_MONITORING: "true"
+      MNEMOSYNED_CLUSTER_LISTEN: mnemosyned-2:8080
+      MNEMOSYNED_CLUSTER_SEEDS: mnemosyned-1:8080,mnemosyned-1:8080
+      MNEMOSYNED_POSTGRES_SCHEMA: mnemosyne2
+    depends_on:
+      - postgres
+    healthcheck:
+      interval: 10s
+volumes:
+  postgres-data:
+    external: false

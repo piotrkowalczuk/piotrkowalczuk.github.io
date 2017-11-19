@@ -1,0 +1,46 @@
+{
+  "dns_config": {
+    "udp_answer_limit": 10
+  },
+  "services": [
+    {
+      "id": "mnemosyne-1",
+      "name": "mnemosyne",
+      "address": "",
+      "port": 10010,
+      "checks": [
+        {
+          "http": "http://localhost:10011/health",
+          "tls_skip_verify": true,
+          "interval": "10s"
+        }
+      ]
+    },
+    {
+      "id": "mnemosyne-2",
+      "name": "mnemosyne",
+      "address": "",
+      "port": 10020,
+      "checks": [
+        {
+          "http": "http://localhost:10021/health",
+          "tls_skip_verify": true,
+          "interval": "10s"
+        }
+      ]
+    },
+    {
+      "id": "mnemosyne-3",
+      "name": "mnemosyne",
+      "address": "",
+      "port": 10030,
+      "checks": [
+        {
+          "http": "http://localhost:10031/health",
+          "tls_skip_verify": true,
+          "interval": "10s"
+        }
+      ]
+    }
+  ]
+}

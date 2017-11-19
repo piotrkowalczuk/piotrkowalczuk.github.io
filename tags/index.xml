@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Piotr Kowalczuk Blog</title>
+    <link>https://piotrkowalczuk.github.io/tags/</link>
+    <description>Recent content in Tags on Piotr Kowalczuk Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>pl</language>
+    <copyright>Piotr Kowalczuk</copyright>
+    <lastBuildDate>Sun, 10 Jul 2016 20:12:00 +0200</lastBuildDate>
+    
+	<atom:link href="https://piotrkowalczuk.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Biblioteka Standardowa</title>
+      <link>https://piotrkowalczuk.github.io/tags/biblioteka-standardowa/</link>
+      <pubDate>Sun, 10 Jul 2016 20:12:00 +0200</pubDate>
+      
+      <guid>https://piotrkowalczuk.github.io/tags/biblioteka-standardowa/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Golang</title>
+      <link>https://piotrkowalczuk.github.io/tags/golang/</link>
+      <pubDate>Tue, 14 Nov 2017 00:12:21 +0100</pubDate>
+      
+      <guid>https://piotrkowalczuk.github.io/tags/golang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Instrumentacja</title>
+      <link>https://piotrkowalczuk.github.io/tags/instrumentacja/</link>
+      <pubDate>Tue, 14 Nov 2017 00:12:21 +0100</pubDate>
+      
+      <guid>https://piotrkowalczuk.github.io/tags/instrumentacja/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Monitoring</title>
+      <link>https://piotrkowalczuk.github.io/tags/monitoring/</link>
+      <pubDate>Tue, 14 Nov 2017 00:12:21 +0100</pubDate>
+      
+      <guid>https://piotrkowalczuk.github.io/tags/monitoring/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Praca</title>
+      <link>https://piotrkowalczuk.github.io/tags/praca/</link>
+      <pubDate>Sat, 21 Oct 2017 19:56:18 +0200</pubDate>
+      
+      <guid>https://piotrkowalczuk.github.io/tags/praca/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Prometheus</title>
+      <link>https://piotrkowalczuk.github.io/tags/prometheus/</link>
+      <pubDate>Tue, 14 Nov 2017 00:12:21 +0100</pubDate>
+      
+      <guid>https://piotrkowalczuk.github.io/tags/prometheus/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Rekrutacja</title>
+      <link>https://piotrkowalczuk.github.io/tags/rekrutacja/</link>
+      <pubDate>Sat, 21 Oct 2017 19:56:18 +0200</pubDate>
+      
+      <guid>https://piotrkowalczuk.github.io/tags/rekrutacja/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Struktury Danych</title>
+      <link>https://piotrkowalczuk.github.io/tags/struktury-danych/</link>
+      <pubDate>Sun, 10 Jul 2016 20:12:00 +0200</pubDate>
+      
+      <guid>https://piotrkowalczuk.github.io/tags/struktury-danych/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
