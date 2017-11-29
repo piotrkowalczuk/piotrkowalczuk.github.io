@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Rekrutacja on Piotr Kowalczuk Blog</title>
-    <link>https://piotrkowalczuk.github.io/tags/rekrutacja/</link>
+    <link>https://gofunc.pl/tags/rekrutacja/</link>
     <description>Recent content in Rekrutacja on Piotr Kowalczuk Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pl</language>
     <copyright>Piotr Kowalczuk</copyright>
     <lastBuildDate>Sat, 21 Oct 2017 19:56:18 +0200</lastBuildDate>
     
-	<atom:link href="https://piotrkowalczuk.github.io/tags/rekrutacja/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://gofunc.pl/tags/rekrutacja/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>W poszukiwaniu pracy jako programista Golang</title>
-      <link>https://piotrkowalczuk.github.io/post/w-poszukiwaniu-pracy-jako-programista-golang/</link>
+      <link>https://gofunc.pl/post/w-poszukiwaniu-pracy-jako-programista-golang/</link>
       <pubDate>Sat, 21 Oct 2017 19:56:18 +0200</pubDate>
       
-      <guid>https://piotrkowalczuk.github.io/post/w-poszukiwaniu-pracy-jako-programista-golang/</guid>
+      <guid>https://gofunc.pl/post/w-poszukiwaniu-pracy-jako-programista-golang/</guid>
       <description>Wstęp Pierwsza stabilna wersja języka została wydana w marcu 2012 roku. Od tamtego czasu mineło już ponad 5 lat.
 W tym czasie w rankingu TIOBE język Go zanotował wzrost z 0.086% do 1.357% i plasuje się na pozycji 20. Mogłoby się to wydawać niewiele, ale jak porównamy to do Javascript&amp;rsquo;u posiadającego obecnie 3% udziału w rynku i będącego na pozycji 6, perspektywa trochę się zmienia.
 Język zajmuję też 9 miejsce pod względem ilości otwartych pull requestów na githubie, posiadając 285 tysięcy kontrybucji.</description>

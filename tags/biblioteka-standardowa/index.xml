@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Biblioteka Standardowa on Piotr Kowalczuk Blog</title>
-    <link>https://piotrkowalczuk.github.io/tags/biblioteka-standardowa/</link>
+    <link>https://gofunc.pl/tags/biblioteka-standardowa/</link>
     <description>Recent content in Biblioteka Standardowa on Piotr Kowalczuk Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pl</language>
     <copyright>Piotr Kowalczuk</copyright>
     <lastBuildDate>Sun, 10 Jul 2016 20:12:00 +0200</lastBuildDate>
     
-	<atom:link href="https://piotrkowalczuk.github.io/tags/biblioteka-standardowa/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://gofunc.pl/tags/biblioteka-standardowa/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Kolejka Priorytetowa</title>
-      <link>https://piotrkowalczuk.github.io/post/kolejka-priorytetowa/</link>
+      <link>https://gofunc.pl/post/kolejka-priorytetowa/</link>
       <pubDate>Sun, 10 Jul 2016 20:12:00 +0200</pubDate>
       
-      <guid>https://piotrkowalczuk.github.io/post/kolejka-priorytetowa/</guid>
+      <guid>https://gofunc.pl/post/kolejka-priorytetowa/</guid>
       <description>Wstęp Kolejka priorytetowa to abstrakcyjna struktura danych gdzie elementy są uszeregowane według danej wielkości. Kolejka ta nie jest kolejką typu FIFO czy też LIFO. Ponieważ jest to ADT może być ona zaimplementowana na wielę sposobów:
  Kopiec binarny Kopiec dwumianowy Tablica Lista Rownoważone BST Kopiec Fibonacciego Kolejka Brodala  Zagadnienie Aby nadać problemowi bardziej intuicyjny charakter spróbujmy zastosować go w praktyce. Naszym zadaniem będzie utworzenie kolejki poleceń. Zadania mogą być dodawane w dowolnej kolejności.</description>
     </item>

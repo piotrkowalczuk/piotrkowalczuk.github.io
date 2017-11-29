@@ -3,81 +3,86 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://piotrkowalczuk.github.io/post/monitorowanie-serwera-http-napisanego-w-golangu/</loc>
+    <loc>https://gofunc.pl/post/popularnosc-golanga-w-polsce-i-na-swiecie/</loc>
+    <lastmod>2017-11-22T20:16:38+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gofunc.pl/post/monitorowanie-serwera-http-napisanego-w-golangu/</loc>
     <lastmod>2017-11-19T00:12:51+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://piotrkowalczuk.github.io/post/w-poszukiwaniu-pracy-jako-programista-golang/</loc>
+    <loc>https://gofunc.pl/post/w-poszukiwaniu-pracy-jako-programista-golang/</loc>
     <lastmod>2017-11-19T00:12:55+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://piotrkowalczuk.github.io/post/kolejka-priorytetowa/</loc>
+    <loc>https://gofunc.pl/post/kolejka-priorytetowa/</loc>
     <lastmod>2016-07-10T20:12:00+02:00</lastmod>
   </url>
   
   <url>
-    <loc>https://piotrkowalczuk.github.io/post/</loc>
-    <lastmod>2017-11-19T00:12:51+01:00</lastmod>
+    <loc>https://gofunc.pl/post/</loc>
+    <lastmod>2017-11-22T20:16:38+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://piotrkowalczuk.github.io/tags/biblioteka-standardowa/</loc>
-    <lastmod>2016-07-10T20:12:00+02:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://piotrkowalczuk.github.io/tags/golang/</loc>
-    <lastmod>2017-11-19T00:12:51+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://piotrkowalczuk.github.io/tags/instrumentacja/</loc>
-    <lastmod>2017-11-19T00:12:51+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://piotrkowalczuk.github.io/tags/monitoring/</loc>
-    <lastmod>2017-11-19T00:12:51+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://piotrkowalczuk.github.io/</loc>
-    <lastmod>2017-11-19T00:12:51+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://piotrkowalczuk.github.io/tags/praca/</loc>
-    <lastmod>2017-11-19T00:12:55+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://piotrkowalczuk.github.io/tags/prometheus/</loc>
-    <lastmod>2017-11-19T00:12:51+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://piotrkowalczuk.github.io/tags/rekrutacja/</loc>
-    <lastmod>2017-11-19T00:12:55+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://piotrkowalczuk.github.io/tags/struktury-danych/</loc>
+    <loc>https://gofunc.pl/tags/biblioteka-standardowa/</loc>
     <lastmod>2016-07-10T20:12:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://piotrkowalczuk.github.io/tags/</loc>
+    <loc>https://gofunc.pl/tags/golang/</loc>
+    <lastmod>2017-11-19T00:12:51+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://gofunc.pl/tags/instrumentacja/</loc>
+    <lastmod>2017-11-19T00:12:51+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://gofunc.pl/tags/monitoring/</loc>
+    <lastmod>2017-11-19T00:12:51+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://gofunc.pl/</loc>
+    <lastmod>2017-11-22T20:16:38+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://gofunc.pl/tags/praca/</loc>
+    <lastmod>2017-11-19T00:12:55+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://gofunc.pl/tags/prometheus/</loc>
+    <lastmod>2017-11-19T00:12:51+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://gofunc.pl/tags/rekrutacja/</loc>
+    <lastmod>2017-11-19T00:12:55+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://gofunc.pl/tags/struktury-danych/</loc>
+    <lastmod>2016-07-10T20:12:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://gofunc.pl/tags/</loc>
     <lastmod>2016-07-10T20:12:00+02:00</lastmod>
     <priority>0</priority>
   </url>
