@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Praca on Piotr Kowalczuk Blog</title>
-    <link>https://gofunc.pl/tags/praca/</link>
-    <description>Recent content in Praca on Piotr Kowalczuk Blog</description>
+    <title>Haskell on Piotr Kowalczuk Blog</title>
+    <link>https://gofunc.pl/tags/haskell/</link>
+    <description>Recent content in Haskell on Piotr Kowalczuk Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pl</language>
     <copyright>Piotr Kowalczuk</copyright>
     <lastBuildDate>Sun, 17 Dec 2017 13:22:00 +0100</lastBuildDate>
     
-	<atom:link href="https://gofunc.pl/tags/praca/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://gofunc.pl/tags/haskell/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -20,17 +20,6 @@
       <guid>https://gofunc.pl/post/popularnosc-golanga-w-polsce-i-na-swiecie/</guid>
       <description>Na temat obecnej sytuacji Golanga pisałem już pokrótce tutaj. Jako że kiedyś musi nadejść dzień mojego powrotu do macierzy, jestem żywo zainteresowany sytuacją Golanga w Polsce. Chciałbym też w przyszłości, mieć jakiś punkt odniesienia, który pozwoli mi ocenić, czy przeprowadzka jest w ogóle sensowna.
 Oprę się tutaj na danych, ogólnie dostępnych w internecie. Zestawię Go z językami różnego kalibru. W pierwszej grupie znajdą się języki z ugruntowaną pozycją na rynku.</description>
-    </item>
-    
-    <item>
-      <title>W poszukiwaniu pracy jako programista Golang</title>
-      <link>https://gofunc.pl/post/w-poszukiwaniu-pracy-jako-programista-golang/</link>
-      <pubDate>Sat, 21 Oct 2017 19:56:18 +0200</pubDate>
-      
-      <guid>https://gofunc.pl/post/w-poszukiwaniu-pracy-jako-programista-golang/</guid>
-      <description>Wstęp Pierwsza stabilna wersja języka została wydana w marcu 2012 roku. Od tamtego czasu mineło już ponad 5 lat.
-W tym czasie w rankingu TIOBE język Go zanotował wzrost z 0.086% do 1.357% i plasuje się na pozycji 20. Mogłoby się to wydawać niewiele, ale jak porównamy to do Javascript&amp;rsquo;u posiadającego obecnie 3% udziału w rynku i będącego na pozycji 6, perspektywa trochę się zmienia.
-Język zajmuję też 9 miejsce pod względem ilości otwartych pull requestów na githubie, posiadając 285 tysięcy kontrybucji.</description>
     </item>
     
   </channel>

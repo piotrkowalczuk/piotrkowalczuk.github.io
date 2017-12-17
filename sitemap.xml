@@ -35,13 +35,31 @@
   
   <url>
     <loc>https://gofunc.pl/tags/golang/</loc>
-    <lastmod>2017-11-19T00:12:51+01:00</lastmod>
+    <lastmod>2017-12-17T13:22:00+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://gofunc.pl/tags/google/</loc>
+    <lastmod>2017-12-17T13:22:00+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://gofunc.pl/tags/haskell/</loc>
+    <lastmod>2017-12-17T13:22:00+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://gofunc.pl/tags/instrumentacja/</loc>
     <lastmod>2017-11-19T00:12:51+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://gofunc.pl/tags/kotlin/</loc>
+    <lastmod>2017-12-17T13:22:00+01:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -59,7 +77,7 @@
   
   <url>
     <loc>https://gofunc.pl/tags/praca/</loc>
-    <lastmod>2017-11-19T00:12:55+01:00</lastmod>
+    <lastmod>2017-12-17T13:22:00+01:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -72,6 +90,12 @@
   <url>
     <loc>https://gofunc.pl/tags/rekrutacja/</loc>
     <lastmod>2017-11-19T00:12:55+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://gofunc.pl/tags/scala/</loc>
+    <lastmod>2017-12-17T13:22:00+01:00</lastmod>
     <priority>0</priority>
   </url>
   

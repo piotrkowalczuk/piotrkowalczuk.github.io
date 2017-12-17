@@ -24,9 +24,27 @@
     <item>
       <title>Golang</title>
       <link>https://gofunc.pl/tags/golang/</link>
-      <pubDate>Tue, 14 Nov 2017 00:12:21 +0100</pubDate>
+      <pubDate>Sun, 17 Dec 2017 13:22:00 +0100</pubDate>
       
       <guid>https://gofunc.pl/tags/golang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Google</title>
+      <link>https://gofunc.pl/tags/google/</link>
+      <pubDate>Sun, 17 Dec 2017 13:22:00 +0100</pubDate>
+      
+      <guid>https://gofunc.pl/tags/google/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Haskell</title>
+      <link>https://gofunc.pl/tags/haskell/</link>
+      <pubDate>Sun, 17 Dec 2017 13:22:00 +0100</pubDate>
+      
+      <guid>https://gofunc.pl/tags/haskell/</guid>
       <description></description>
     </item>
     
@@ -36,6 +54,15 @@
       <pubDate>Tue, 14 Nov 2017 00:12:21 +0100</pubDate>
       
       <guid>https://gofunc.pl/tags/instrumentacja/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Kotlin</title>
+      <link>https://gofunc.pl/tags/kotlin/</link>
+      <pubDate>Sun, 17 Dec 2017 13:22:00 +0100</pubDate>
+      
+      <guid>https://gofunc.pl/tags/kotlin/</guid>
       <description></description>
     </item>
     
@@ -51,7 +78,7 @@
     <item>
       <title>Praca</title>
       <link>https://gofunc.pl/tags/praca/</link>
-      <pubDate>Sat, 21 Oct 2017 19:56:18 +0200</pubDate>
+      <pubDate>Sun, 17 Dec 2017 13:22:00 +0100</pubDate>
       
       <guid>https://gofunc.pl/tags/praca/</guid>
       <description></description>
@@ -72,6 +99,15 @@
       <pubDate>Sat, 21 Oct 2017 19:56:18 +0200</pubDate>
       
       <guid>https://gofunc.pl/tags/rekrutacja/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Scala</title>
+      <link>https://gofunc.pl/tags/scala/</link>
+      <pubDate>Sun, 17 Dec 2017 13:22:00 +0100</pubDate>
+      
+      <guid>https://gofunc.pl/tags/scala/</guid>
       <description></description>
     </item>
     
