@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html>
+<head lang="pl">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	}
+		<title>Testy jednostkowe w Golangu &middot; Piotr Kowalczuk Blog</title>
+	
+	<meta name="description" content="Testowanie przykładowej aplikacji internetowej w sposób czytelny i ustandaryzowany.">
+	<meta name="HandheldFriendly" content="True">
+	<meta name="MobileOptimized" content="320">
+    <meta name="theme-color" content="#F03838">
+	<meta name="generator" content="Hugo 0.36-DEV" />
+	<meta name="robots" content="index,follow">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="msvalidate.01" content="A8790252D66007E2B9E2D6AC3BC9DAD3" />
+
+	<link rel="stylesheet" href="https://gofunc.pl/css/normalize.css">
+	<link rel="stylesheet" href="https://gofunc.pl/css/highlight.css">
+	<link rel="stylesheet" href="https://gofunc.pl/css/style.css">
+	<link rel="stylesheet" href="https://gofunc.pl/css/custom.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300&subset=latin,cyrillic-ext,latin-ext,cyrillic">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <link rel="alternate" hreflang="pl" href="https://gofunc.pl/post/testy-jednostkowe-w-golangu/" />
+
+	
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.5.0/styles/tomorrow.min.css">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.5.0/highlight.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.5.0/languages/go.min.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+<body itemscope itemtype="http://schema.org/WebPage">
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-50599199-4', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+<div id="wrapper">
+	<header class="site-header">
+		<div class="container">
+			<div class="site-title-wrapper">
+				
+				<h1 class="site-title">
+					<a
+							title="Piotr Kowalczuk Blog"
+                            itemprop="url"
+							href="https://gofunc.pl/">
+					Piotr Kowalczuk Blog
+					</a>
+				</h1>
+				
+				<a class="button-square" href="https://gofunc.pl/index.xml"><i class="fa fa-rss"></i></a>
+				
+				
+				<a class="button-square button-social hint--top" data-hint="Github" title="Github" href="https://github.com/piotrkowalczuk">
+					<i class="fa fa-github-alt"></i>
+				</a>
+				
+				
+				<a class="button-square button-social hint--top" data-hint="Stack Overflow" title="Stack Overflow" href="https://stackoverflow.com/users/1315205/piotr-kowalczuk">
+					<i class="fa fa-stack-overflow"></i>
+				</a>
+				
+				
+				<a class="button-square button-social hint--top" data-hint="LinkedIn" title="LinkedIn" href="https://linkedin.com/in/piotr-kowalczuk-8a870480/">
+					<i class="fa fa-linkedin"></i>
+				</a>
+				
+				
+			</div>
+
+			<ul class="site-nav">
+				
+    <li class="site-nav-item">
+        <a title="Blog" href="https://gofunc.pl/post">Blog</a>
+    </li>
+
+			</ul>
+		</div>
+	</header>
+
+	<div id="container">
+
+
+<div class="container">
+    <article class="post-container" itemscope="" itemprop="mainEntity mainEntityOfPage" itemtype="http://schema.org/BlogPosting">
+        <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Testy jednostkowe w Golangu</h1>
+    <meta itemscope itemprop="mainEntityOfPage"  itemType="https://schema.org/WebPage" itemid="https://gofunc.pl/post/testy-jednostkowe-w-golangu/"/>
+    
+    <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+        <div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+            <meta itemprop="url" content="https://gofunc.pl/img/pkb-logo.jpg">
+            <meta itemprop="width" content="400">
+            <meta itemprop="height" content="60">
+        </div>
+        <meta itemprop="name" content="Piotr Kowalczuk - Opensource Golang Development">
+    </div>
+    
+        <p class="post-description" itemprop="description">Testowanie przykładowej aplikacji internetowej w sposób czytelny i ustandaryzowany.</p>
+    
+    <p class="post-date">
+        <span>Opublikowany <time datetime="2018-02-18" itemprop="datePublished">2018-02-18</time></span>
+        <span>przez</span>
+        <span itemscope="" itemprop="author" itemtype="http://schema.org/Person">
+            <span itemprop="name">
+                <a href="https://gofunc.pl" itemprop="url" rel="author">Piotr Kowalczuk</a>
+            </span>
+        </span>
+        <br/>
+        <span>Zmodyfikowany <time datetime="2018-02-18" itemprop="dateModified">2018-02-18</time></span>
+    </p>
+</header>
+
+        <div class="post-content clearfix" itemprop="articleBody">
+    
+
+<h2 id="wstęp">Wstęp</h2>
+
+<p>Testowanie jednostkowe to jedna z podstawowych technik weryfikowania poprawnego działania programu. Nie oznacza to jednak, że temat jest prosty. Szczególnie w przypadku  <strong>Go</strong>, gdzie biblioteka <a href="https://golang.org/pkg/testing/">testing</a>, mimo iż potężna, nie narzuca jednego właściwego podejścia do tematu. Daje to nam dużą swobodę, ale nie za darmo. W przypadku większych zespołów ta swoboda może być problemem. Warto się wtedy zastanowić nad ustandaryzowaniem swojego podejścia.</p>
+
+<p>Chciałbym się podzielić z wami moim sposobem pisania nieco bardziej złożonych testów jednostkowych. Nie będzie to nic wyrafinowanego. Celem nadrzędnym jest, aby po spotkaniu z nieznanym do tej pory kodem, interpretowanie oraz rozszerzanie testów było proste.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>Przyjmijmy, że mamy do przetestowania kontroler naszego web serwisu.
+Jest to prosta aplikacja, która umożliwia dilerowi samochodów zarządzanie swoją flotą.</p>
+
+<h3 id="kontroler">Kontroler</h3>
+
+<p>Kontrolery w naszej aplikacji muszą spełniać następujący interfejs:</p>
+
+<pre><code class="language-go">type controller interface {
+	handle(*http.Request) (interface{}, error)
+}
+</code></pre>
+
+<p>Taka abstrakcja pozwala nam, odseparować warstwę biznesową od transportowej.
+Ktoś mógłby zwrócić uwagę, że przez użycie <code>http.Request</code> jest to niemożliwe. Aby nie komplikować naszego przykładu aż zanadto, musimy zaakceptować to niewielkie niedociągnięcie.</p>
+
+<p>Na tapetę weźmiemy kontroler dodawania oraz modyfikowania samochodów, którego uproszczona implementacja mogłaby wyglądać następująco:</p>
+
+<pre><code class="language-go">package example 
+
+type Payload struct {
+	ID          int64 `storage:&quot;identifier&quot;` // if set, storage will perform update, otherwise insert
+	Name        string
+	Age, Mileage int
+	Owner       string
+}
+
+type PutCarController struct {
+	Storage Storage
+}
+
+func (pcc *PutCarController) Handle(req *http.Request) (interface{}, error) {
+	var pay Payload
+	if err := json.NewDecoder(req.Body).Decode(&amp;pay); err != nil {
+		return nil, err
+	}
+	req.Body.Close()
+
+	if pay.Name == &quot;&quot; {
+		return nil, errors.New(&quot;missing name&quot;)
+	}
+
+	if err := pcc.Storage.Put(req.Context(), &amp;pay); err != nil {
+		return nil, err
+	}
+
+	return &amp;pay, nil
+}
+</code></pre>
+
+<p>Jest ona pozbawiona wszelkiego rodzaju ozdobników. Nawet walidacja żądania jest uproszczona. To, co sprawi najwięcej problemu podczas testowania tego kawałka kodu to przygotowanie <a href="https://pl.wikipedia.org/wiki/Atrapa_obiektu">atrapy</a> bazy danych.</p>
+
+<h3 id="baza-danych">Baza danych</h3>
+
+<p>Jaka jest to baza danych, nie ma dla nas żadnego znaczenia. Chociaż nie ukrywam, że planując jej interfejs, wzorowałem się na <a href="https://cloud.google.com/datastore/docs/concepts/overview">Google Datastore</a>. Oto on:</p>
+
+<pre><code class="language-go">package example 
+
+type Storage interface {
+	Put(context.Context, interface{}) error
+	Get(context.Context, int64) (interface{}, error)
+}
+</code></pre>
+
+<p><code>Put</code> zapisuje obiekt do bazy danych. Jeżeli operacja zakończy się sukcesem i obiekt nie miał wcześniej nadanego identyfikatora (pole oznaczona tagiem <code>identifier</code>), zostanie mu on nadany, a przekazany obiekt zmodyfikowany o ten identyfikator. W razie fiaska zwraca błąd.</p>
+
+<p><code>Get</code> nie jest nam do niczego potrzebny, jest tutaj jedynie, aby nadać sensu kolejnej sekcji ;)</p>
+
+<h2 id="stub-czy-mock">Stub czy mock?</h2>
+
+<p>Nasz przypadek jest bardzo uproszczony. Użycie stuba wydaje się (i słusznie) uzasadnione. Oto jak taki stub mógłby wyglądać:</p>
+
+<pre><code class="language-go">type testStorage struct {
+	storage // embeded interface
+	
+	id int64
+	err error
+}
+
+func (ts *testStorage) Put(_ context.Context, obj interface{}) (int64, error) {
+	return ts.id, ts.err
+}
+</code></pre>
+
+<p>Dzięki osadzeniu interfejsu <code>storage</code> w <code>testStorage</code> nasza struktura implementuje cały potrzebny interfejs.
+Trzeba jednak pamiętać, że wywołanie <code>Get</code> zakończy się, wyrzuceniem wyjątku (panic).</p>
+
+<p>Aby spełnić obietnicę z tytułu, przekombinujemy nieco nasze rozwiązanie.
+Nie zważając na rozsądek, wykorzystamy mocki.</p>
+
+<p>Do utworzenia atrap, posłuży nam <a href="https://github.com/vektra/mockery">mockery</a>.
+Narzędzie te w połączeniu z <code>go generate</code> umożliwi nam w łatwy sposób wygenerować wszystkie potrzebne obiekty.
+W bardziej złożonych aplikacjach takie podejście odpłaci się z nawiązką.</p>
+
+<p>Możemy ten proces zautomatyzować, dodając do naszego kodu:</p>
+
+<pre><code class="language-go">//go:generate mockery -case=underscore -all
+</code></pre>
+
+<p>Dzięki temu, przy każdorazowym wywołaniu komendy <code>go generate</code>, wszystkie atrapy zostaną wygenerowane automatycznie.</p>
+
+<h2 id="scenariusz">Scenariusz</h2>
+
+<p>Nasz test powinien pokrywać możliwie dużo pozytywnych, jak i negatywnych przypadków. Powinny być one, od siebie całkowicie odseparowane (nie mogą dzielić stanu). Dodawanie nowych przypadków powinno być proste i nie narażać już istniejących na modyfikacje.</p>
+
+<h3 id="table-driven-testing">Table Driven Testing</h3>
+
+<p>Jest to powszechnie stosowany wzorzec, polegający na grupowaniu różnych przypadków w jednym teście i iterowaniu po nich. Przeciwieństwem jest tworzenie osobnego testu dla każdego przypadku z osobna:</p>
+
+<pre><code class="language-go">func TestPutCarController_Handle_success(t *testing.T) { ... }
+func TestPutCarController_Handle_deadlineExceeded(t *testing.T) { ... }
+</code></pre>
+
+<p><a href="https://github.com/golang/go/wiki/TableDrivenTests">TDT</a> ułatwia utrzymywanie oraz poruszanie się po testach. Osobiście jestem zwolennikiem stosowania mapy, gdzie klucze służą wyjaśnieniu co taki test ma udowodnić oraz pozwalają szybko przeskoczyć (cmd+f) z lini komend do konkretnego miejsca w kodzie, gdzie taki test jest zdefiniowany.</p>
+
+<p>Aby przetestować metodę <code>Handle</code> naszego kontrolera, będziemy potrzebować struktury opisującej kolekcje przypadków.</p>
+
+<pre><code class="language-go">cases := map[string]struct {
+	req  *http.Request
+	init func(*testing.T)
+	res  interface{}
+	err  error
+}{}
+</code></pre>
+
+<p>Składa się ona z:</p>
+
+<ul>
+<li><code>req</code> - argumentu przekazywanego do metody <code>Handle</code></li>
+<li><code>init</code> - funkcji inicjalizującej wszystkie atrapy, może być <code>nil</code></li>
+<li><code>res</code> - przewidywanej odpowiedzi</li>
+<li><code>err</code> - w razie, jeżeli jest to scenariusz testujący pesymistyczny przypadek, potrzebujemy obiektu błędu do porównania</li>
+</ul>
+
+<h3 id="szablon">Szablon</h3>
+
+<p>Szablon, na razie bez zaimplementowanych przypadków, wygląda następująco:</p>
+
+<pre><code class="language-go">package example_test
+
+func TestPutCarController_Handle(t *testing.T) {
+	storage := &amp;mocks.Storage{}
+
+	req := func(t *testing.T, obj interface{}) *http.Request {
+		buf, err := json.Marshal(obj)
+		if err != nil {
+			t.Fatalf(&quot;payload marshal failure: %s&quot;, err.Error())
+		}
+		return httptest.NewRequest(
+			http.MethodPut, 
+			&quot;http://localhost&quot;, 
+			bytes.NewReader(buf),
+		)
+	} // 1
+	
+	cases := map[string]struct {
+		req  *http.Request
+		init func(*testing.T)
+		res  interface{}
+		err  error
+	}{
+		// TODO: implement
+	}
+
+	for hint, given := range cases {
+		t.Run(hint, func(t *testing.T) {
+			storage.ExpectedCalls = nil // 2
+
+			if given.init != nil { // 3
+				given.init(t)
+			}
+
+			got, err := (&amp;example.PutCarController{
+				Storage: storage,
+			}).Handle(given.req)
+			if given.err != nil { // 4
+				if err == nil {
+					t.Fatal(&quot;expected error, got nil&quot;)
+				}
+				if given.err.Error() != err.Error() {
+					t.Fatalf(&quot;wrong error, expected:\n	%s\nbut got:\n	%s&quot;, given.err.Error(), err.Error())
+				}
+			} else {
+				if !reflect.DeepEqual(given.res, got) {
+					t.Fatalf(&quot;wrong response, expected:\n	%v\nbut got:\n	%v&quot;, given.res, got)
+				}
+			}
+
+			mock.AssertExpectationsForObjects(t, storage) // 5
+		})
+	}
+}
+</code></pre>
+
+<p>Warto się na chwile pochylić nad powyższym kodem i przeanalizować go nieco głębiej. Snippet ten posiada kilka oznaczonych punktów, które są warte wyjaśnienia:</p>
+
+<ol>
+<li>Pomocnicza funkcja, która inicjalizuje obiekt <code>http.Request</code>, który niesie ze sobą dane w formacie JSON.</li>
+<li>Resetowanie mock&rsquo;ów.</li>
+<li>Nie każdy przypadek będzie potrzebował dodatkowej inicjalizacji. Dla utrzymania przejrzystości, funkcja <code>init</code> jest opcjonalna.</li>
+<li>Sprawdzamy, czy oczekiwanym rezultatem jest błąd. Innymi słowy, czy jest to przypadek pesymistyczny. Jeżeli tak, porównujemy zwrócony błąd, do tego którego oczekujemy.</li>
+<li>Sprawdzamy, czy liczba wywołań metod naszych atrap zgadza się z oczekiwaniami.</li>
+</ol>
+
+<h3 id="przypadki">Przypadki</h3>
+
+<h4 id="brakująca-nazwa">Brakująca nazwa</h4>
+
+<pre><code class="language-go">cases := map[string]struct {
+	req  *http.Request
+	init func(*testing.T)
+	res  interface{}
+	err  error
+}{
+	&quot;missing-name&quot;: {
+		req: req(t, &amp;example.Payload{}),
+		err: errors.New(&quot;missing name&quot;),
+	},
+}
+</code></pre>
+
+<h4 id="przekroczenie-czasu-żądania">Przekroczenie czasu żądania</h4>
+
+<p>Ten test weryfikuje, czy zwrócony błąd przez bazę danych jest przekazany dalej. Wspólny dekorator dla wszystkich kontrolerów mógłby interpretować taki błąd i ustawiać odpowiedni kod statusu. W tym przypadku byłby to <code>http.StatusRequestTimeout</code>.</p>
+
+<pre><code class="language-go">cases := map[string]struct {
+	req  *http.Request
+	init func(*testing.T)
+	res  interface{}
+	err  error
+}{
+	&quot;deadline-exceeded&quot;: {
+		req: req(t, &amp;example.Payload{
+			Name: &quot;brand new car&quot;,
+		}),
+		err: context.DeadlineExceeded,
+		init: func(t *testing.T) {
+			storage.On(&quot;Put&quot;, mock.Anything, mock.AnythingOfType(&quot;*example.Payload&quot;)).
+				Return(context.DeadlineExceeded).
+				Once()
+		},
+	},
+}
+</code></pre>
+
+<h4 id="zły-format-żądania">Zły format żądania</h4>
+
+<p>W przypadku gdy klient wyśle źle sformatowane dane, powinien zostać powiadomiony o tym.</p>
+
+<pre><code class="language-go">cases := map[string]struct {
+	req  *http.Request
+	init func(*testing.T)
+	res  interface{}
+	err  error
+}{
+	&quot;text-payload&quot;: {
+		req: httptest.NewRequest(http.MethodPut, &quot;http://localhost&quot;, strings.NewReader(&quot;not-json-at-all&quot;)),
+		err: errors.New(&quot;invalid json payload&quot;),
+	},
+}
+</code></pre>
+
+<h4 id="sukces">Sukces</h4>
+
+<p>Zdecydowanie najpełniejszy przykład. Pokazuje on jak stosować paczkę <a href="https://godoc.org/github.com/stretchr/testify/mock">mock</a>.</p>
+
+<pre><code class="language-go">cases := map[string]struct {
+	req  *http.Request
+	init func(*testing.T)
+	res  interface{}
+	err  error
+}{
+	&quot;success&quot;: {
+		req: req(t, &amp;example.Payload{
+			Name: &quot;brand new car&quot;,
+		}),
+		res: &amp;example.Payload{
+			ID:   100,
+			Name: &quot;brand new car&quot;,
+		},
+		init: func(t *testing.T) {
+			storage.On(&quot;Put&quot;, mock.Anything, mock.AnythingOfType(&quot;*example.Payload&quot;)).
+				Run(func(args mock.Arguments) {
+					if pay, ok := args.Get(1).(*example.Payload); ok {
+						pay.ID = 100
+					}
+				}).
+				Return(nil).
+				Once()
+		},
+	},
+}
+</code></pre>
+
+<h2 id="podsumowanie">Podsumowanie</h2>
+
+<p>Prezentowany sposób jest czytelny i nieźle skaluje się wraz ze wzrostem przypadków, jak i testów. Osiągnięcie pełnego pokrycia kodu w testach nie jest problemem:</p>
+
+<pre><code>go test -v -cover
+=== RUN   TestPutCarController_Handle
+=== RUN   TestPutCarController_Handle/deadline-exceeded
+=== RUN   TestPutCarController_Handle/text-payload
+=== RUN   TestPutCarController_Handle/missing-name
+=== RUN   TestPutCarController_Handle/success
+--- PASS: TestPutCarController_Handle (0.00s)
+    --- PASS: TestPutCarController_Handle/deadline-exceeded (0.00s)
+    	mock.go:420: PASS:	Put(string,mock.AnythingOfTypeArgument)
+    --- PASS: TestPutCarController_Handle/text-payload (0.00s)
+    --- PASS: TestPutCarController_Handle/missing-name (0.00s)
+    --- PASS: TestPutCarController_Handle/success (0.00s)
+    	mock.go:420: PASS:	Put(string,mock.AnythingOfTypeArgument)
+PASS
+coverage: 100.0% of statements
+ok  	github.com/piotrkowalczuk/blog/examples/testy-jednostkowe-w-golangu	0.016s
+</code></pre>
+
+<p>Jest jednak jeszcze trochę miejsca na ulepszenia. Wspólna funkcja <code>assertError</code> pozwoliłoby wyeliminować duplikację kodu pomiędzy testami. Dodanie własnego typu  błędu umożliwiłoby lepszą obsługę błędów w samym kontrolerze, jak i bardziej elastyczną asercję. Dekodowanie zawartości żądania poza kontrolerem pozwoliłoby na jeszcze lepszą separację warstw.</p>
+
+<p>W kolejnym kroku polecam zapoznać się ze świetnym wpisem <a href="https://commandcenter.blogspot.de/2017/12/error-handling-in-upspin.html">Error handling in Upspin</a>. Rob Pike przedstawia tam dość nowatorskie jak na standardy Go podejście do obsługi błędów.</p>
+
+</div>
+
+        <footer class="post-footer clearfix">
+    
+        <p class="post-tags">
+            <span>Tagged:</span>
+            
+                 <a href="https://gofunc.pl/tags/golang/">golang</a>
+            
+                 <a href="https://gofunc.pl/tags/mock/">mock</a>
+            
+                 <a href="https://gofunc.pl/tags/stub/">stub</a>
+            
+                 <a href="https://gofunc.pl/tags/test/">test</a>
+            
+                 <a href="https://gofunc.pl/tags/unit/">unit</a>
+            
+        </p>
+    
+
+    <div class="share">
+        <a class="icon-twitter" href="http://twitter.com/share?text=Testy%20jednostkowe%20w%20Golangu&url=https%3a%2f%2fgofunc.pl%2fpost%2ftesty-jednostkowe-w-golangu%2f"
+            onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+            <i class="fa fa-twitter"></i>
+            <span class="hidden">Twitter</span>
+        </a>
+
+        <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fgofunc.pl%2fpost%2ftesty-jednostkowe-w-golangu%2f"
+            onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+            <i class="fa fa-facebook"></i>
+            <span class="hidden">Facebook</span>
+        </a>
+
+        <a class="icon-google-plus" href="https://plus.google.com/share?url=https%3a%2f%2fgofunc.pl%2fpost%2ftesty-jednostkowe-w-golangu%2f"
+           onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+           <i class="fa fa-google-plus"></i>
+            <span class="hidden">Google+</span>
+        </a>
+    </div>
+    <div style="padding-top: 4rem;">
+        <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+    (function() {
+        
+        
+        if (window.location.hostname === 'localhost') {
+            return;
+        }
+
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = 'piotrkowalczuk';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+</footer>
+
+        
+    <div class="comments">
+        <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "piotrkowalczuk" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+
+    </article>
+</div>
+
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="container">
+                <div class="site-title-wrapper">
+                    <h1 class="site-title">
+                        <a title="Piotr Kowalczuk Blog" href="https://gofunc.pl/">Piotr Kowalczuk Blog</a>
+                    </h1>
+                    <a class="button-square button-jump-top js-jump-top" href="#">
+                        <i class="fa fa-angle-up"></i>
+                    </a>
+                </div>
+                <ul class="footer-links">
+                    <li><a href="http://blog.lantkowiak.pl" title="Łukasz Antkowiak Blog" rel="external">
+                        Łukasz Antkowiak Blog
+                    </a></li>
+                </ul>
+                <p class="footer-copyright">
+                    <span>&copy; 2018 / Powered by <a href="http://gohugo.io/">Hugo</a></span>
+                </p>
+            </div>
+        </footer>
+
+        <script src="https://gofunc.pl/js/jquery-1.11.3.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+        <script src="https://gofunc.pl/js/jquery.fitvids.js"></script>
+        <script src="https://gofunc.pl/js/scripts.js"></script>
+    </body>
+</html>
+

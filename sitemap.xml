@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://gofunc.pl/post/testy-jednostkowe-w-golangu/</loc>
+    <lastmod>2018-02-18T20:11:00+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://gofunc.pl/post/popularnosc-golanga-w-polsce-i-na-swiecie/</loc>
     <lastmod>2017-12-17T13:22:00+01:00</lastmod>
   </url>
@@ -24,7 +29,7 @@
   
   <url>
     <loc>https://gofunc.pl/post/</loc>
-    <lastmod>2017-12-17T13:22:00+01:00</lastmod>
+    <lastmod>2018-02-18T20:11:00+01:00</lastmod>
   </url>
   
   <url>
@@ -35,7 +40,7 @@
   
   <url>
     <loc>https://gofunc.pl/tags/golang/</loc>
-    <lastmod>2017-12-17T13:22:00+01:00</lastmod>
+    <lastmod>2018-02-18T20:11:00+01:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -64,6 +69,12 @@
   </url>
   
   <url>
+    <loc>https://gofunc.pl/tags/mock/</loc>
+    <lastmod>2018-02-18T20:11:00+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://gofunc.pl/tags/monitoring/</loc>
     <lastmod>2017-11-19T00:12:51+01:00</lastmod>
     <priority>0</priority>
@@ -71,7 +82,7 @@
   
   <url>
     <loc>https://gofunc.pl/</loc>
-    <lastmod>2017-12-17T13:22:00+01:00</lastmod>
+    <lastmod>2018-02-18T20:11:00+01:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -106,8 +117,26 @@
   </url>
   
   <url>
+    <loc>https://gofunc.pl/tags/stub/</loc>
+    <lastmod>2018-02-18T20:11:00+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://gofunc.pl/tags/</loc>
     <lastmod>2016-07-10T20:12:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://gofunc.pl/tags/test/</loc>
+    <lastmod>2018-02-18T20:11:00+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://gofunc.pl/tags/unit/</loc>
+    <lastmod>2018-02-18T20:11:00+01:00</lastmod>
     <priority>0</priority>
   </url>
   

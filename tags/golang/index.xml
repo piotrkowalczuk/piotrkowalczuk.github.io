@@ -7,10 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>pl</language>
     <copyright>Piotr Kowalczuk</copyright>
-    <lastBuildDate>Sun, 17 Dec 2017 13:22:00 +0100</lastBuildDate>
+    <lastBuildDate>Sun, 18 Feb 2018 20:11:00 +0100</lastBuildDate>
     
 	<atom:link href="https://gofunc.pl/tags/golang/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Testy jednostkowe w Golangu</title>
+      <link>https://gofunc.pl/post/testy-jednostkowe-w-golangu/</link>
+      <pubDate>Sun, 18 Feb 2018 20:11:00 +0100</pubDate>
+      
+      <guid>https://gofunc.pl/post/testy-jednostkowe-w-golangu/</guid>
+      <description>Wstęp Testowanie jednostkowe to jedna z podstawowych technik weryfikowania poprawnego działania programu. Nie oznacza to jednak, że temat jest prosty. Szczególnie w przypadku Go, gdzie biblioteka testing, mimo iż potężna, nie narzuca jednego właściwego podejścia do tematu. Daje to nam dużą swobodę, ale nie za darmo. W przypadku większych zespołów ta swoboda może być problemem. Warto się wtedy zastanowić nad ustandaryzowaniem swojego podejścia.
+Chciałbym się podzielić z wami moim sposobem pisania nieco bardziej złożonych testów jednostkowych.</description>
+    </item>
     
     <item>
       <title>Popularność Golanga w Polsce i na świecie</title>

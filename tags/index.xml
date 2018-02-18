@@ -24,7 +24,7 @@
     <item>
       <title>Golang</title>
       <link>https://gofunc.pl/tags/golang/</link>
-      <pubDate>Sun, 17 Dec 2017 13:22:00 +0100</pubDate>
+      <pubDate>Sun, 18 Feb 2018 20:11:00 +0100</pubDate>
       
       <guid>https://gofunc.pl/tags/golang/</guid>
       <description></description>
@@ -63,6 +63,15 @@
       <pubDate>Sun, 17 Dec 2017 13:22:00 +0100</pubDate>
       
       <guid>https://gofunc.pl/tags/kotlin/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Mock</title>
+      <link>https://gofunc.pl/tags/mock/</link>
+      <pubDate>Sun, 18 Feb 2018 20:11:00 +0100</pubDate>
+      
+      <guid>https://gofunc.pl/tags/mock/</guid>
       <description></description>
     </item>
     
@@ -117,6 +126,33 @@
       <pubDate>Sun, 10 Jul 2016 20:12:00 +0200</pubDate>
       
       <guid>https://gofunc.pl/tags/struktury-danych/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Stub</title>
+      <link>https://gofunc.pl/tags/stub/</link>
+      <pubDate>Sun, 18 Feb 2018 20:11:00 +0100</pubDate>
+      
+      <guid>https://gofunc.pl/tags/stub/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Test</title>
+      <link>https://gofunc.pl/tags/test/</link>
+      <pubDate>Sun, 18 Feb 2018 20:11:00 +0100</pubDate>
+      
+      <guid>https://gofunc.pl/tags/test/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Unit</title>
+      <link>https://gofunc.pl/tags/unit/</link>
+      <pubDate>Sun, 18 Feb 2018 20:11:00 +0100</pubDate>
+      
+      <guid>https://gofunc.pl/tags/unit/</guid>
       <description></description>
     </item>
     
