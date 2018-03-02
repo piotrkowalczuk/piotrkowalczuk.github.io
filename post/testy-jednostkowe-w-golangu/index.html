@@ -6,7 +6,7 @@
 	
 		<title>Testy jednostkowe w Golangu &middot; Piotr Kowalczuk Blog</title>
 	
-	<meta name="description" content="Testowanie przykładowej aplikacji internetowej w sposób czytelny i ustandaryzowany.">
+	<meta name="description" content="Testowanie przykładowej aplikacji internetowej napisanej w języku Go, w sposób czytelny i ustandaryzowany.">
 	<meta name="HandheldFriendly" content="True">
 	<meta name="MobileOptimized" content="320">
     <meta name="theme-color" content="#F03838">
@@ -106,7 +106,7 @@ ga('send', 'pageview');
         <meta itemprop="name" content="Piotr Kowalczuk - Opensource Golang Development">
     </div>
     
-        <p class="post-description" itemprop="description">Testowanie przykładowej aplikacji internetowej w sposób czytelny i ustandaryzowany.</p>
+        <p class="post-description" itemprop="description">Testowanie przykładowej aplikacji internetowej napisanej w języku Go, w sposób czytelny i ustandaryzowany.</p>
     
     <p class="post-date">
         <span>Opublikowany <time datetime="2018-02-18" itemprop="datePublished">2018-02-18</time></span>
@@ -126,9 +126,16 @@ ga('send', 'pageview');
 
 <h2 id="wstęp">Wstęp</h2>
 
-<p>Testowanie jednostkowe to jedna z podstawowych technik weryfikowania poprawnego działania programu. Nie oznacza to jednak, że temat jest prosty. Szczególnie w przypadku  <strong>Go</strong>, gdzie biblioteka <a href="https://golang.org/pkg/testing/">testing</a>, mimo iż potężna, nie narzuca jednego właściwego podejścia do tematu. Daje to nam dużą swobodę, ale nie za darmo. W przypadku większych zespołów ta swoboda może być problemem. Warto się wtedy zastanowić nad ustandaryzowaniem swojego podejścia.</p>
+<p>Testowanie jednostkowe to jedna z podstawowych technik weryfikowania poprawnego działania programu.
+Nie oznacza to jednak, że temat jest prosty.
+Szczególnie w przypadku  <strong>Go</strong>, gdzie biblioteka <a href="https://golang.org/pkg/testing/">testing</a>, mimo iż potężna, nie narzuca jednego właściwego podejścia do tematu.
+Daje to nam dużą swobodę, ale nie za darmo.
+W przypadku większych zespołów ta swoboda może być problemem.
+Warto się wtedy zastanowić nad ustandaryzowaniem swojego podejścia.</p>
 
-<p>Chciałbym się podzielić z wami moim sposobem pisania nieco bardziej złożonych testów jednostkowych. Nie będzie to nic wyrafinowanego. Celem nadrzędnym jest, aby po spotkaniu z nieznanym do tej pory kodem, interpretowanie oraz rozszerzanie testów było proste.</p>
+<p>Chciałbym się podzielić z wami moim sposobem pisania nieco bardziej złożonych testów jednostkowych.
+Nie będzie to nic wyrafinowanego.
+Celem nadrzędnym jest, aby po spotkaniu z nieznanym do tej pory kodem, interpretowanie oraz rozszerzanie testów było proste.</p>
 
 <h2 id="problem">Problem</h2>
 
@@ -145,7 +152,8 @@ Jest to prosta aplikacja, która umożliwia dilerowi samochodów zarządzanie sw
 </code></pre>
 
 <p>Taka abstrakcja pozwala nam, odseparować warstwę biznesową od transportowej.
-Ktoś mógłby zwrócić uwagę, że przez użycie <code>http.Request</code> jest to niemożliwe. Aby nie komplikować naszego przykładu aż zanadto, musimy zaakceptować to niewielkie niedociągnięcie.</p>
+Ktoś mógłby zwrócić uwagę, że przez użycie <code>http.Request</code> jest to niemożliwe.
+Aby nie komplikować naszego przykładu aż zanadto, musimy zaakceptować to niewielkie niedociągnięcie.</p>
 
 <p>Na tapetę weźmiemy kontroler dodawania oraz modyfikowania samochodów, którego uproszczona implementacja mogłaby wyglądać następująco:</p>
 
@@ -181,11 +189,14 @@ func (pcc *PutCarController) Handle(req *http.Request) (interface{}, error) {
 }
 </code></pre>
 
-<p>Jest ona pozbawiona wszelkiego rodzaju ozdobników. Nawet walidacja żądania jest uproszczona. To, co sprawi najwięcej problemu podczas testowania tego kawałka kodu to przygotowanie <a href="https://pl.wikipedia.org/wiki/Atrapa_obiektu">atrapy</a> bazy danych.</p>
+<p>Jest ona pozbawiona wszelkiego rodzaju ozdobników.
+Nawet walidacja żądania jest uproszczona.
+To, co sprawi najwięcej problemu podczas testowania tego kawałka kodu to przygotowanie <a href="https://pl.wikipedia.org/wiki/Atrapa_obiektu">atrapy</a> bazy danych.</p>
 
 <h3 id="baza-danych">Baza danych</h3>
 
-<p>Jaka jest to baza danych, nie ma dla nas żadnego znaczenia. Chociaż nie ukrywam, że planując jej interfejs, wzorowałem się na <a href="https://cloud.google.com/datastore/docs/concepts/overview">Google Datastore</a>. Oto on:</p>
+<p>Jaka jest to baza danych, nie ma dla nas żadnego znaczenia. Chociaż nie ukrywam, że planując jej interfejs, wzorowałem się na <a href="https://cloud.google.com/datastore/docs/concepts/overview">Google Datastore</a>.
+Oto on:</p>
 
 <pre><code class="language-go">package example 
 
@@ -201,7 +212,9 @@ type Storage interface {
 
 <h2 id="stub-czy-mock">Stub czy mock?</h2>
 
-<p>Nasz przypadek jest bardzo uproszczony. Użycie stuba wydaje się (i słusznie) uzasadnione. Oto jak taki stub mógłby wyglądać:</p>
+<p>Nasz przypadek jest bardzo uproszczony.
+Użycie stuba wydaje się (i słusznie) uzasadnione.
+Oto jak taki stub mógłby wyglądać:</p>
 
 <pre><code class="language-go">type testStorage struct {
 	storage // embeded interface
@@ -234,7 +247,8 @@ W bardziej złożonych aplikacjach takie podejście odpłaci się z nawiązką.<
 
 <h2 id="scenariusz">Scenariusz</h2>
 
-<p>Nasz test powinien pokrywać możliwie dużo pozytywnych, jak i negatywnych przypadków. Powinny być one, od siebie całkowicie odseparowane (nie mogą dzielić stanu). Dodawanie nowych przypadków powinno być proste i nie narażać już istniejących na modyfikacje.</p>
+<p>Nasz test powinien pokrywać możliwie dużo pozytywnych, jak i negatywnych przypadków.
+Powinny być one, od siebie całkowicie odseparowane (nie mogą dzielić stanu). Dodawanie nowych przypadków powinno być proste i nie narażać już istniejących na modyfikacje.</p>
 
 <h3 id="table-driven-testing">Table Driven Testing</h3>
 
